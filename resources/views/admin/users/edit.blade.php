@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        {{ __('Create admin') }}
+        {{ __('Edit admin') }}
     </x-slot>
     <x-slot name="addLink">
         <a href="{{ route('admin.users.index')}}" class="btn btn-primary float-right">Back</a>
@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <livewire:user-create />
+                    <livewire:user-edit :user="$user"/>
                 </div>
             </div>
 

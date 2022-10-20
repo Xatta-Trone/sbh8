@@ -5,7 +5,7 @@
  @method('DELETE')
     <a class="btn btn-sm btn-danger" :href={{ route("$route.edit", $row->id)}}
         onclick="event.preventDefault();
-        this.closest('form').submit();">
+        if(confirm('are your sure?')){this.closest('form').submit();}">
         Delete
     </a>
 </form>

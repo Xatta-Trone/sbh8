@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/plugins/summernote/summernote-bs4.min.css') }}">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
     <style>
         [x-cloak] {
@@ -47,7 +47,7 @@
     @livewireStyles
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <!-- jQuery -->
     <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -116,7 +116,7 @@
 
 
                         <div class="col-sm-6">
-                            {{ $addLink }}
+                            {{ $addLink ?? '' }}
 
                         </div>
                         <!-- /.col -->
