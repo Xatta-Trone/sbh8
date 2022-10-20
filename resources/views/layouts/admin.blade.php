@@ -127,6 +127,17 @@
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
+                    <div>
+
+                        @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+
+                            </div>
+                        @endif
+
+                    </div>
+                    <livewire:flash-container />
                     {{ $slot }}
 
                 </div><!-- /.container-fluid -->
