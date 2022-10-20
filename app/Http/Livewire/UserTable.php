@@ -5,16 +5,30 @@ namespace App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserTable extends DataTableComponent
 {
     protected $model = User::class;
+
+    public function mount()
+    {
+        // $this->model::orderBy('id', 'desc');
+
+    }
+
 
 
 
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
+    {
+
+        return User::query();
     }
 
 
