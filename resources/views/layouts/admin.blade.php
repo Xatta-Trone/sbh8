@@ -38,6 +38,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    @stack('styles')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- jQuery -->
@@ -75,6 +77,7 @@
     {{-- <script src="{{ asset('admin_assets/dist/js/demo.js') }}" defer></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="{{ asset('admin_assets/dist/js/pages/dashboard.js') }}" defer></script> --}}
+    @stack('scripts')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

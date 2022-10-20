@@ -3,7 +3,7 @@
         {{ __('Dashboard') }}
     </x-slot>
     <x-slot name="title">
-        {{ __('Admin::home') }}
+        {{ __('Admin - Home') }}
     </x-slot>
 
     <div class="row">

@@ -11,7 +11,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('admin_assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                        <i class="nav-icon fas fa-user-circle fa-2x" style="color: white;"></i>
+                        {{-- <img src="{{ asset('admin_assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image"> --}}
                     </div>
                     <div class="info">
                         <span href="#" class="d-block text-white">{{ auth()->user()->name }}</span>
