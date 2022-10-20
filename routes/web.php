@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,15 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
+    Route::resource('pages', PagesController::class);
+    Route::resource('users', UserController::class);
+
+
     Route::get('/', function () {
         return view('admin.index');
     })->name('home');
 
-    Route::resource('pages', PagesController::class);
+
 });
 
 Route::get('/dashboard', function () {

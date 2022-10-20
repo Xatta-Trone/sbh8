@@ -1,9 +1,9 @@
 <x-admin-layout>
     <x-slot name="header">
-        {{ __('Dashboard') }}
+        Dashboard
     </x-slot>
     <x-slot name="title">
-        {{ __('Admin - Home') }}
+        {{ __('Admin - Dashboard') }}
     </x-slot>
 
     <div class="row">

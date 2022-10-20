@@ -38,7 +38,13 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
     @stack('styles')
+    @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -85,8 +91,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('admin_assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
-                width="60">
+            <img class="animation__shake" src="{{ asset('admin_assets/dist/img/AdminLTELogo.png') }}"
+                alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -143,6 +149,8 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+    @livewireScripts
 </body>
 
 </html>
