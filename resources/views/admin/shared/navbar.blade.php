@@ -28,7 +28,7 @@
                 </a>
                 <div class="dropdown-divider"></div>
 
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" style="cursor: pointer;">
                     @csrf
 
                     <a class="dropdown-item" :href="route('logout')"

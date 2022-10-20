@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,12 @@ Route::get('/', function () {
 
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('admin', function () {
+Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', function () {
         return view('admin.index');
-    })->name('admin.home');
+    })->name('home');
+
+    Route::resource('pages', PagesController::class);
 });
 
 Route::get('/dashboard', function () {
