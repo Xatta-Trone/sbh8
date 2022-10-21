@@ -25,6 +25,7 @@
                 </div>
 
                 <div class="fom-group">
+
                     <label for="description">Additional information (optional if google drive link is given)</label>
                     <div wire:ignore>
                         <textarea id="summernote" wire:model="description">{{ $description }}</textarea>
@@ -78,9 +79,11 @@
             $('#summernote').summernote({
                 callbacks: {
                     onChange: function(contents, $editable) {
-                        // console.log('onChange:', contents, $editable);
+                        // console.log('onChange:', contents,contents == '<br>');
                         // @this.set('description', contents)
-                        deb(contents);
+                        const content = contents == '<br>' ? null : contents;
+                        // console.log(content)
+                        deb(content);
                     },
                     onInit: function() {
                         console.log('Summernote is launched');

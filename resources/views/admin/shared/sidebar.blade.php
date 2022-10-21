@@ -56,10 +56,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.pages.index') }}" class="nav-link">
+                    <a href="{{ route('admin.administrator.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                           Pages
+                           Administrator
                         </p>
                     </a>
                 </li>

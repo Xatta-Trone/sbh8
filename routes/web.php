@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdministratorController;
 use App\Models\Admin\Notice;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
@@ -30,6 +31,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('pages', PagesController::class);
     Route::resource('users', UserController::class);
     Route::resource('notices', NoticeController::class);
+    Route::resource('administrator', AdministratorController::class);
 
 
     Route::get('/', function () {
