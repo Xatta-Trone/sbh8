@@ -8,7 +8,7 @@
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">History</a></li>
-                <li><a href="#">Administration</a></li>
+                <li><a href="{{ route('administration') }}">Administration</a></li>
                 <li><a href="#">Residents</a></li>
                 <li><a href="#">Activities</a></li>
                 <li><a href="#">Alumni</a></li>

@@ -70,8 +70,8 @@
                     <label for="exampleSelectRounded0">Publish status <span class="badge badge-danger">required</span></label>
                     <select class="custom-select rounded-0" id="exampleSelectRounded0" wire:model="status">
                         <option value="" selected>Select an option</option>
-                        <option value="0">Published</option>
-                        <option value="1">Unpublish</option>
+                        <option value="1">Published</option>
+                        <option value="0">Unpublish</option>
                     </select>
                     @error('status')
                         <span class="error text-danger">{{ $message }}</span>

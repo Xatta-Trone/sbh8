@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Route::get('notices/{id}', [GeneralPageController::class, 'singleNotice'])->name('singleNotice');
 Route::get('notices', [GeneralPageController::class, 'notice'])->name('notice');
+Route::get('administration', [GeneralPageController::class, 'administration'])->name('administration');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);
