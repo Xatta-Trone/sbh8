@@ -27,7 +27,7 @@ class NoticeCreate extends Component
     public function submit()
     {
         $this->validate();
-        Notice::create($this->validate());
+        Notice::create(array_merge($this->validate(), []));
         flash('Notice created')->success();
         return redirect()->route('admin.notices.index');
     }
