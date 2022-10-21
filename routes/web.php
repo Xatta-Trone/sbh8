@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\NoticeController;
-use App\Http\Controllers\Admin\PagesController;
-use App\Http\Controllers\Admin\UserController;
+use App\Models\Admin\Notice;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\User\GeneralPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $notices = Notice::select('id', 'title', 'created_at')->latest()->take(10)->get();
+    return view('welcome', compact('notices'));
 })->name('home');
 
-
+Route::get('notices/{id}', [GeneralPageController::class, 'singleNotice'])->name('singleNotice');
+Route::get('notices', [GeneralPageController::class, 'notice'])->name('notice');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);

@@ -45,15 +45,16 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <marquee>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente esse culpa eaque
-                        quisquam deserunt doloribus veritatis voluptas ad, architecto odit, reprehenderit officia
-                        maiores iste, minima sed tempora eos necessitatibus laboriosam. Quaerat, autem tempora. Adipisci
-                        fugit temporibus quam quod quia laborum quos, quas excepturi, assumenda porro est. Accusamus,
-                        nostrum quasi vel ipsum porro doloremque? Tempore itaque magni nesciunt alias sint adipisci modi
-                        nam rerum fuga reiciendis similique architecto quae optio nemo saepe libero quam, praesentium id
-                        aliquam repellat repudiandae quasi illum. Recusandae aspernatur enim sed itaque praesentium
-                        culpa temporibus, magnam consequuntur sunt ut aliquid possimus ullam sint eos facere? Nostrum,
-                        dicta?</marquee>
+                    <marquee>
+
+                        @forelse ($notices as $notice)
+                            <a href="">{{ $notice->title }}</a>
+                        @empty
+
+                        @endforelse
+
+
+                    </marquee>
                 </div>
             </div>
         </div>

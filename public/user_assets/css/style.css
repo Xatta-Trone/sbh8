@@ -58,12 +58,21 @@ p {
 	line-height: 1.6;
 }
 
+
 img {
 	max-width: 100%;
 }
 
 marquee {
     color: white;
+}
+marquee a {
+    color: white;
+}
+
+marquee a::after {
+    content: '::';
+    margin: auto 10px;
 }
 input:focus,
 select:focus,
@@ -1121,7 +1130,8 @@ ol {
 	text-align: center;
 }
 
-.site-pageination li a {
+.site-pageination li a,
+.site-pageination li span {
 	display: inline-block;
 	min-width: 40px;
 	height: 40px;
@@ -1133,6 +1143,9 @@ ol {
 	border-radius: 2px;
 }
 
+.site-pageination li.disabled {
+    cursor: not-allowed;
+}
 .site-pageination li a:hover,
 .site-pageination li a.active {
 	background: #f6783a;
