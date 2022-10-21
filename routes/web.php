@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\AlumniController;
 use App\Models\Admin\Notice;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
@@ -27,12 +28,15 @@ Route::get('/', function () {
 Route::get('notices/{id}', [GeneralPageController::class, 'singleNotice'])->name('singleNotice');
 Route::get('notices', [GeneralPageController::class, 'notice'])->name('notice');
 Route::get('administration', [GeneralPageController::class, 'administration'])->name('administration');
+Route::get('alumni/{slug}', [GeneralPageController::class, 'alumniDetail'])->name('alumniDetail');
+Route::get('alumni', [GeneralPageController::class, 'alumni'])->name('alumni');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);
     Route::resource('users', UserController::class);
     Route::resource('notices', NoticeController::class);
     Route::resource('administrator', AdministratorController::class);
+    Route::resource('alumins', AlumniController::class);
 
 
     Route::get('/', function () {

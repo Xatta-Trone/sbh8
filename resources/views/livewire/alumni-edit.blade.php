@@ -12,25 +12,12 @@
                 </div>
 
 
-                <div class="form-group">
-                    <label for="admintype">Administrator type <span class="badge badge-danger">required</span></label>
-                    <select class="custom-select rounded-0" id="admintype" wire:model="type">
-                        <option value="" selected>Select an option</option>
-                        <option value="{{ App\Enums\AdministratorType::Provost }}">Provost</option>
-                        <option value="{{ App\Enums\AdministratorType::AssistantProvost }}">Assistant Provost</option>
-                        <option value="{{ App\Enums\AdministratorType::Staff }}">Staff</option>
-                    </select>
-                    @error('type')
-                        <span class="error text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
 
                 <div class="form-group">
-                    <label for="Designation">Designation <span class="badge badge-danger">required</span></label>
+                    <label for="Designation">Designation</label>
                     <input type="text" class="form-control" id="Designation"
                         placeholder="Enter administrator designation" wire:model="designation">
-                    <small id="emailHelp" class="form-text text-muted">Example: Provost, Assistant provost, tresarary,
-                        sick boy</small>
+                    <small id="emailHelp" class="form-text text-muted">Example: CEO of a company</small>
                     @error('designation')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
@@ -39,11 +26,10 @@
 
                 <div class="fom-group">
 
-                    <label for="description">Contact information</label>
-                    <div>
-                        <textarea wire:model="description" class="form-control" rows="8"></textarea>
-                        <small id="emailHelp" class="form-text text-muted">Example: Email:monzurul.ce.buet@gmail.com;
-                            Phone: 01521112102</small>
+                    <label for="description">Detail information</label>
+                    <div wire:ignore>
+                        <textarea id="summernote" wire:model="description"></textarea>
+                        <small id="emailHelp" class="form-text text-muted">More details about the alumni....</small>
                     </div>
 
                     @error('description')
@@ -105,3 +91,40 @@
     </div>
 
 </div>
+
+@push('scripts')
+    <script>
+        function debounce(func, timeout = 300) {
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    func.apply(this, args);
+                }, timeout);
+            };
+        }
+
+
+        $(function() {
+            var deb = debounce(function(contents) {
+                @this.set('description', contents)
+            }, 250);
+
+
+            $('#summernote').summernote({
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        // console.log('onChange:', contents,contents == '<br>');
+                        // @this.set('description', contents)
+                        const content = contents == '<br>' ? null : contents;
+                        // console.log(content)
+                        deb(content);
+                    },
+                    onInit: function() {
+                        console.log('Summernote is launched');
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

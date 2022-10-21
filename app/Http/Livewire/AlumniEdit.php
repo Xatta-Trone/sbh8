@@ -2,19 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Admin\Alumni;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
-use App\Models\Admin\Administrator;
 use Illuminate\Support\Facades\Storage;
 
-class AdministratorEdit extends Component
+class AlumniEdit extends Component
 {
     use WithFileUploads;
 
     public $name;
     public $designation;
-    public $type;
     public $image;
     public $description;
     public $status;
@@ -26,22 +25,20 @@ class AdministratorEdit extends Component
 
     protected $rules = [
         'name' => 'required',
-        'designation' => 'required',
-        'type' => 'required',
+        'designation' => 'sometimes|nullable',
         'image' => 'sometimes|nullable|image|max:1024',
         'description' => 'sometimes|nullable',
         'status' => 'required',
     ];
 
-    public function mount($administrator)
+    public function mount($alumni)
     {
-        $this->name = $administrator->name;
-        $this->adminId = $administrator->id;
-        $this->designation = $administrator->designation;
-        $this->type = $administrator->type;
-        $this->oldImage = $administrator->image;
-        $this->description = $administrator->description;
-        $this->status = $administrator->status;
+        $this->name = $alumni->name;
+        $this->adminId = $alumni->id;
+        $this->designation = $alumni->designation;
+        $this->oldImage = $alumni->image;
+        $this->description = $alumni->description;
+        $this->status = $alumni->status;
     }
 
 
@@ -53,21 +50,20 @@ class AdministratorEdit extends Component
         // dd($this->validate(), $this->image != null);
 
         if ($this->image != null) {
-            $this->fileName = 'photos/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
+            $this->fileName = 'alumni/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
             $this->image->storeAs('', $this->fileName);
             Storage::delete($this->oldImage);
         } else {
             $this->fileName = $this->oldImage;
         }
 
-        Administrator::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName]));
-        flash('Administrator updated')->success();
-        return redirect()->route('admin.administrator.index');
+        Alumni::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName]));
+        flash('Alumni updated')->success();
+        return redirect()->route('admin.alumins.index');
     }
-
 
     public function render()
     {
-        return view('livewire.administrator-edit');
+        return view('livewire.alumni-edit');
     }
 }

@@ -11,7 +11,7 @@
                 <li><a href="{{ route('administration') }}">Administration</a></li>
                 <li><a href="#">Residents</a></li>
                 <li><a href="#">Activities</a></li>
-                <li><a href="#">Alumni</a></li>
+                <li><a href="{{ route('alumni') }}">Alumni</a></li>
                 <li><a href="{{ route('notice') }}">Notice Board</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>

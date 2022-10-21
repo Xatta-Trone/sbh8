@@ -12,7 +12,7 @@
                     <h4>PROVOST</h4>
                 </div>
 
-                <div class="row">
+                <div class="row text-center">
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Provost) as $admin)
                         <div class="col-md-3 d-flex mx-auto">
                             <div class="card w-100">
@@ -30,7 +30,7 @@
                     <h4>ASSISTANT PROVOST</h4>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center text-center">
                     @foreach ($administration->where('type', App\Enums\AdministratorType::AssistantProvost) as $admin)
                         <div class="col-md-3 d-flex  mx-auto">
                             <div class="card w-100">
@@ -48,7 +48,7 @@
                     <h4>STAFFS</h4>
                 </div>
 
-                <div class="row">
+                <div class="row text-center">
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Staff)->sortBy('designation') as $admin)
                         <div class="col-md-3 d-flex mx-auto">
                             <div class="card w-100 mb-3">

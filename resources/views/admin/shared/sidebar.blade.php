@@ -38,6 +38,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('admin.notices.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Notices
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -65,13 +74,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.notices.index') }}" class="nav-link">
+                    <a href="{{ route('admin.alumins.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Notices
+                            Alumni
                         </p>
                     </a>
                 </li>
+
+
+
 
             </ul>
         </nav>
