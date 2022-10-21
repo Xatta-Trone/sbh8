@@ -75,6 +75,13 @@
             width: auto;
             background-size: cover;
         }
+
+        h4 {
+            font-size: 25px;
+            background-color: #7B0100;
+            color: #fff;
+            line-height: 1.5;
+        }
     </style>
 
 

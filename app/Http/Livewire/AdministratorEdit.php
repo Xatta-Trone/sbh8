@@ -50,13 +50,14 @@ class AdministratorEdit extends Component
     {
         $this->validate();
 
-        if ($this->image) {
+        // dd($this->validate(), $this->image != null);
+
+        if ($this->image != null) {
             $this->fileName = 'photos/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
             $this->image->storeAs('', $this->fileName);
-        }
-
-        if ($this->oldImage) {
             Storage::delete($this->oldImage);
+        } else {
+            $this->fileName = $this->oldImage;
         }
 
         Administrator::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName]));
