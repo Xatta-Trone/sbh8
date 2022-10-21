@@ -22,11 +22,11 @@
 
                         </div>
                     @elseif ($notice->url == null)
-                        <div class="col-md-10 mx-auto">
+                        <div class="col-md-12 mx-auto">
                             {!! $notice->description !!}
                         </div>
                     @else
-                        <div class="col-md-10 mx-auto">
+                        <div class="col-md-12 mx-auto">
                             <a href="{{ $notice->url }}" target="_blank" class="mb-2">{{ $notice->url }}</a>
                             <iframe src="{{ $notice->drive_link }}"
                                 style="width:100%; height:600px; border:0;"></iframe>
