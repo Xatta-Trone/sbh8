@@ -12,9 +12,9 @@
                 <div class="accordion" id="accordionExample">
                     <ul class="list-group list-group-flush">
                         @foreach ($notices as $notice)
-                            <li class="list-group-item"> <a
-                                    href="{{ route('singleNotice', $notice->id) }}">[{{ $notice->formatted_date }}]
-                                    {{ $notice->title }}</a>
+                            <li class="list-group-item notice-title"> <a
+                                    href="{{ route('singleNotice', $notice->slug) }}">
+                                    <span class="notice-date px-2">{{ $notice->formatted_date }}</span>{{ $notice->title }}</a>
                             </li>
                         @endforeach
                     </ul>

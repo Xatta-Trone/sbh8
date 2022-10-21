@@ -1,0 +1,23 @@
+.notice-date.px-2 {
+    color: #fff;
+    background-color: #7B0100;
+    padding: 10px 25px;
+    margin-right: 1rem;
+}
+
+.notice-title,
+.notice-title a {
+    color: black;
+    text-transform: capitalize;
+}
+
+
+.notice-description a {
+    color: #7B0100;
+    text-decoration: underline;
+}
+
+iframe {
+    display: inline-block;
+    margin-top: 10px;
+}

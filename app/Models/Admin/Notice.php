@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -40,6 +41,11 @@ class Notice extends Model
     public function getFormattedDateAttribute()
     {
         return $this->created_at->format('jS F, Y');
+    }
+
+    public function getSlugAttribute()
+    {
+        return $this->id . '-' . Str::slug($this->title);
     }
 
 

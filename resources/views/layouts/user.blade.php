@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('user_assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('user_assets/css/xatta.css') }}" />
 
 
     <!--[if lt IE 9]>

@@ -27,6 +27,7 @@ class GeneralPageController extends Controller
 
     public function singleNotice($id)
     {
+        $id = explode('-', $id)[0];
         $notice = Notice::findOrFail($id);
 
         return view('user.singleNotice', compact('notice'));
