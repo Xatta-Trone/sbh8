@@ -162,8 +162,22 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+        $(function() {
+
+        });
+    </script>
+    @stack('scripts')
     @livewireScripts
+
+
+
+
+
+
 </body>
 
 </html>
