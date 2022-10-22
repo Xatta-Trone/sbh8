@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Admin\Page;
 use App\Enums\NoticeStatus;
+use App\Models\Admin\Alumni;
 use App\Models\Admin\Notice;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\Administrator;
-use App\Models\Admin\Alumni;
+use App\Http\Controllers\Controller;
 
 class GeneralPageController extends Controller
 {
@@ -51,5 +52,11 @@ class GeneralPageController extends Controller
     public function contact()
     {
         return view('user.contact');
+    }
+
+    public function getPage($slug)
+    {
+        $page = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        return view('user.dynamic-page', compact('page'));
     }
 }

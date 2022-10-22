@@ -60,10 +60,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/mail', function () {
-
-
-
     Mail::to('monzurul.ce.buet@gmail.com')->send(new OrderShipped());
 });
 
+
 require __DIR__ . '/auth.php';
+
+
+Route::get('{slug}', [GeneralPageController::class, 'getPage'])->name('{slug}');
