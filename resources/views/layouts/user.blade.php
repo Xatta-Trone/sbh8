@@ -4,8 +4,6 @@
 <head>
     <title>{{ $title." :: ".$site_name ?? config('app.name', 'Sher-E-Bangla Hall, BUET') }}</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Unica University Template">
-    <meta name="keywords" content="event, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link href="{{ $logo }}" rel="shortcut icon" />
@@ -22,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('user_assets/css/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/xatta.css') }}" />
+
+    {!! SEO::generate() !!}
 
     <style>
         [x-cloak] {

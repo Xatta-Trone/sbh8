@@ -6,8 +6,11 @@ use App\Models\Admin\SiteSetting;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,6 +55,14 @@ class AppServiceProvider extends ServiceProvider
         View::share('description_short', $settings->where('key', 'description_short')->first()->value);
         View::share('scripts', $settings->where('key', 'scripts')->first()->value);
         View::share('links', $settings->where('key', 'links')->first()->value);
+
+        SEOTools::setTitle($settings->where('key', 'name')->first()->value);
+        SEOTools::setDescription($settings->where('key', 'description')->first()->value);
+        SEOTools::opengraph()->setUrl(url(''));
+        SEOTools::setCanonical(url(''));
+        OpenGraph::setUrl(url(''));
+        SEOMeta::addKeyword($settings->where('key', 'keywords')->first()->value);
+        OpenGraph::addImage(url('uploads/' . $settings->where('key', 'og_image')->first()->value));
     }
 
 
