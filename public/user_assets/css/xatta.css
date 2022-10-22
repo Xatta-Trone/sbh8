@@ -11,6 +11,7 @@
     background-color: #7b0100;
     padding: 10px 25px;
     margin-right: 1rem;
+    display: inline-block;
 }
 
 .notice-title,

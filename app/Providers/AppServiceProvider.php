@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Admin\SiteSetting;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         Model::unguard();
         // Paginator::useBootstrap();
         Paginator::defaultView('shared.pagination');

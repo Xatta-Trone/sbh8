@@ -14,8 +14,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('user_assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('user_assets/css/themify-icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('user_assets/css/magnific-popup.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('user_assets/css/themify-icons.css') }}" /> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('user_assets/css/magnific-popup.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('user_assets/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/style.css') }}" />
@@ -88,9 +88,9 @@
     </script>
 
     <script src="{{ asset('user_assets/js/owl.carousel.min.js') }} "></script>
-    <script src="{{ asset('user_assets/js/jquery.countdown.js') }} "></script>
-    <script src="{{ asset('user_assets/js/masonry.pkgd.min.js') }} "></script>
-    <script src="{{ asset('user_assets/js/magnific-popup.min.js') }} "></script>
+    {{-- <script src="{{ asset('user_assets/js/jquery.countdown.js') }} "></script> --}}
+    {{-- <script src="{{ asset('user_assets/js/masonry.pkgd.min.js') }} "></script> --}}
+    {{-- <script src="{{ asset('user_assets/js/magnific-popup.min.js') }} "></script> --}}
     <script src="{{ asset('user_assets/js/main.js') }} "></script>
 
     @stack('scripts')
