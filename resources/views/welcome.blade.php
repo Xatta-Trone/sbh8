@@ -17,10 +17,12 @@
 
                                     @if ($slider->header_text)
                                         <h2 class="hs-title">{{ $slider->header_text }}</h2>
+                                        <br>
                                     @endif
 
                                     @if ($slider->content_text)
-                                        <p class="hs-des">{{ $slider->content_text }}</p>
+                                        <span class="hs-des">{{ $slider->content_text }}</span>
+                                        <br>
                                     @endif
 
                                     @if ($slider->url)
