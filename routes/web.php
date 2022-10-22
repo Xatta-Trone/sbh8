@@ -55,22 +55,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/mail', function () {
-    // $mj = Mailjet::getClient();
-
-    // $body = [
-    //     'FromEmail' => "monzurul.inovace@gmail.com",
-    //     'FromName' => "From name to be displayed in Inbox",
-    //     'Subject' => "New Website Enquiry",
-    //     'MJ-TemplateID' => 123456789,
-    //     'MJ-TemplateLanguage' => true,
-    //     'Vars' => json_decode(json_encode(['asdf' => 'sdf']), true),
-    //     'Recipients' => [['Email' => "monzurul.ce.buet@gmail.com"]]
-    // ];
-
-    // $response = $mj->post(Resources::$Email, ['body' => $body]);
 
 
-    Mail::to('monzurul.ce.buet@gmail.com')->send(new OrderShipped());
+
+    Mail::to('xatta.trone@gmail.com')->send(new OrderShipped());
 });
 
 require __DIR__ . '/auth.php';
