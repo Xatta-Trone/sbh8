@@ -1,3 +1,11 @@
+.custom-red {
+    color: #7B0100;
+}
+
+.custom-red-bg {
+    background-color: #7B0100;
+    color: white !important;
+}
 .notice-date.px-2 {
     color: #fff;
     background-color: #7B0100;
@@ -107,4 +115,57 @@ iframe {
 .site-logo {
     position: relative;
     width: 100%;
+    margin-left: 5px;
+}
+
+.hs-title {
+    background: white;
+    color: #7B0100 !important;
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.hs-des {
+    /*! background: white; */
+    color: #7B0100 !important;
+    display: block;
+}
+
+marquee a:hover {
+    color: white;
+}
+
+marquee a {
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.counter-section {
+    padding: 30px 0;
+}
+
+.img-custom {
+    height: 270px;
+    width: auto;
+    background-size: cover;
+}
+
+.provost-msg p {
+    color: black;
+    font-size: 1.1rem;
+}
+
+.notice-section li {
+    background: transparent;
+    padding: 25px 0;
+    /* border-color: #ececec; */
+}
+
+.notice-btn {
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 0;
+    font-size: 1.2rem;
 }

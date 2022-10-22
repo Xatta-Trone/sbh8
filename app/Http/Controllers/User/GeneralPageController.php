@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\AdministratorType;
 use App\Models\Admin\Page;
 use App\Enums\NoticeStatus;
 use App\Models\Admin\Alumni;
@@ -9,9 +10,20 @@ use App\Models\Admin\Notice;
 use Illuminate\Http\Request;
 use App\Models\Admin\Administrator;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Slider;
 
 class GeneralPageController extends Controller
 {
+    public function home()
+    {
+        $notices = Notice::select('id', 'title', 'created_at')->where('status', 1)->latest()->take(5)->get();
+        $sliders = Slider::latest()->take(5)->get();
+        $provost = Administrator::where('type', AdministratorType::Provost)->where('status', 1)->first();
+        $welcome_message = Page::where('slug', 'welcome-message')->where('status', 1)->first();
+
+        return view('welcome', compact('notices', 'sliders', 'provost', 'welcome_message'));
+    }
+
     public function notice()
     {
         $notices = Notice::where('status', NoticeStatus::Published)->latest()->paginate(20);

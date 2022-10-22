@@ -32,7 +32,7 @@
                     <li class="nav-item {{ request()->is('alumni*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('alumni') }}">alumni</a>
                     </li>
-                    <li class="nav-item {{ request()->routeIs('notice') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->is('notices*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('notice') }}">notice board</a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}">

@@ -19,7 +19,7 @@
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Provost) as $admin)
                         <div class="col-md-3 d-flex mx-auto">
                             <div class="card w-100">
-                                <div class="img rounded" style="background-image: url({{ $admin->image_path }})"></div>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
                                 <div class="card-body py-3">
                                     <h5 class="mb-0">{{ $admin->name }}</h5>
                                     <span>{!! $admin->description !!}</span>
@@ -37,7 +37,7 @@
                     @foreach ($administration->where('type', App\Enums\AdministratorType::AssistantProvost) as $admin)
                         <div class="col-md-3 d-flex  mx-auto">
                             <div class="card w-100">
-                                <div class="img rounded" style="background-image: url({{ $admin->image_path }})"></div>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
                                 <div class="card-body py-3">
                                     <h5 class="mb-0">{{ $admin->name }}</h5>
                                     <span>{!! $admin->description !!}</span>
@@ -55,7 +55,7 @@
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Staff)->sortBy('designation') as $admin)
                         <div class="col-md-3 d-flex mx-auto">
                             <div class="card w-100 mb-3">
-                                <div class="img rounded" style="background-image: url({{ $admin->image_path }})"></div>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
                                 <div class="card-body py-3">
                                     <h5 class="mb-0">{{ $admin->name }}</h5>
                                     <span>{!! $admin->designation !!} <br>{!! $admin->description !!}</span>
@@ -73,7 +73,7 @@
     </div>
 
     <style>
-        .img {
+        .img-custom {
             height: 270px;
             width: auto;
             background-size: cover;

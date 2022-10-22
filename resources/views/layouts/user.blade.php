@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>{{ $title ?? config('app.name', 'Sher-E-Bangla Hall, BUET') }}</title>
+    <title>{{ $title." :: ".$site_name ?? config('app.name', 'Sher-E-Bangla Hall, BUET') }}</title>
     <meta charset="UTF-8">
     <meta name="description" content="Unica University Template">
     <meta name="keywords" content="event, unica, creative, html">

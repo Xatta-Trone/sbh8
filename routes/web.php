@@ -27,11 +27,8 @@ use App\Http\Controllers\Admin\SliderController;
 |
 */
 
-Route::get('/', function () {
-    $notices = Notice::select('id', 'title', 'created_at')->latest()->take(10)->get();
-    return view('welcome', compact('notices'));
-})->name('home');
 
+Route::get('/', [GeneralPageController::class, 'home'])->name('home');
 Route::get('notices/{id}', [GeneralPageController::class, 'singleNotice'])->name('singleNotice');
 Route::get('notices', [GeneralPageController::class, 'notice'])->name('notice');
 Route::get('administration', [GeneralPageController::class, 'administration'])->name('administration');
