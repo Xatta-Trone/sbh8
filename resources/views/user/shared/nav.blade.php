@@ -18,8 +18,9 @@
     </div>
 </nav>
 
-<div class="container sticky-top">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<div class="navbar-area sticky-top" style="background-color: red;">
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,4 +43,5 @@
         </div>
     </nav>
 
+</div>
 </div>

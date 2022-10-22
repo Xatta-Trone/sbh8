@@ -2,18 +2,26 @@
 
 namespace App\Http\Livewire;
 
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use App\Models\Admin\Slider;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\Admin\Page;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
-class PageTable extends DataTableComponent
+class SliderTable extends DataTableComponent
 {
-    protected $model = Page::class;
+    protected $model = Slider::class;
 
     public function configure(): void
     {
         $this->setPrimaryKey('id');
         $this->setDefaultSort('id', 'desc');
+    }
+
+    public function builder(): Builder
+    {
+
+        return Slider::query();
     }
 
     public function columns(): array
@@ -22,15 +30,18 @@ class PageTable extends DataTableComponent
             Column::make("Id", "id")
                 ->sortable()
                 ->searchable(),
-            Column::make("Title", "title")
+            Column::make('Image Name', 'image')
                 ->sortable()
                 ->searchable(),
-            Column::make("Slug", "slug")
-                ->sortable()
-                ->searchable(),
-            Column::make("Page Type", "content_type")
-                ->sortable()
-                ->searchable(),
+            ImageColumn::make('Image preview', 'image')
+                ->location(
+                    fn ($row) => url('uploads/' . $row->image)
+                )
+                ->attributes(fn ($row) => [
+                    'class' => 'rounded-full',
+                    'alt' => $row->image,
+                    'height' => 100
+                ]),
             Column::make('Published', "status")
                 ->format(
                     fn ($value, $row, Column $column) => $row->status ? 'Yes' : 'No'
@@ -41,7 +52,7 @@ class PageTable extends DataTableComponent
                 ->sortable(),
             Column::make('Action')
                 ->label(
-                    fn ($row, Column $column) => view('shared.action', ['route' => 'admin.pages'])->withRow($row)
+                    fn ($row, Column $column) => view('shared.action', ['route' => 'admin.sliders'])->withRow($row)
                 ),
         ];
     }
