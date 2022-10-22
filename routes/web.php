@@ -58,7 +58,7 @@ Route::get('/mail', function () {
 
 
 
-    Mail::to('xatta.trone@gmail.com')->send(new OrderShipped());
+    Mail::to('monzurul.ce.buet@gmail.com')->send(new OrderShipped());
 });
 
 require __DIR__ . '/auth.php';
