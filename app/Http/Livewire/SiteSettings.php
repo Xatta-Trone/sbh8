@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Admin\SiteSetting;
 use Illuminate\Support\Facades\Cache;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class SiteSettings extends Component
@@ -48,8 +49,6 @@ class SiteSettings extends Component
         // dd($formData);
 
         SiteSetting::where('key', $formData['key'])->update(['value' => $formData['value']]);
-
-
         flash('Settings updated')->success();
         return redirect()->route('admin.site-settings.index');
     }
@@ -66,7 +65,13 @@ class SiteSettings extends Component
             }
 
             $this->fileName = 'site/site_logo' . '.' . $this->newLogo->extension();
-            $this->newLogo->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            // $this->newLogo->storeAs('', $this->fileName);
+
+            $imgFile = Image::make($this->newLogo->getRealPath());
+            $imgFile->resize(null, 1024, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
 
             SiteSetting::where('key', 'logo')->update(['value' => $this->fileName]);
         }
@@ -91,7 +96,12 @@ class SiteSettings extends Component
             }
 
             $this->fileName = 'site/og_image' . '.' . $this->newOgImage->extension();
-            $this->newOgImage->storeAs('', $this->fileName);
+            // $this->newOgImage->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            $imgFile = Image::make($this->newOgImage->getRealPath());
+            $imgFile->resize(null, 630, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
 
             SiteSetting::where('key', 'og_image')->update(['value' => $this->fileName]);
         }

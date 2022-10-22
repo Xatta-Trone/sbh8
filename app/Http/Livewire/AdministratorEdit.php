@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\Admin\Administrator;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AdministratorEdit extends Component
@@ -54,7 +55,12 @@ class AdministratorEdit extends Component
 
         if ($this->image != null) {
             $this->fileName = 'photos/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
-            $this->image->storeAs('', $this->fileName);
+            // $this->image->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            $imgFile = Image::make($this->image->getRealPath());
+            $imgFile->resize(null, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
             Storage::delete($this->oldImage);
         } else {
             $this->fileName = $this->oldImage;

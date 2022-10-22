@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\Admin\Administrator;
+use Intervention\Image\Facades\Image;
 
 class AdministratorCreate extends Component
 {
@@ -38,8 +39,17 @@ class AdministratorCreate extends Component
 
         if ($this->image) {
             $this->fileName = 'photos/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
-            $this->image->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            // $this->image->storeAs('', $this->fileName);
+            $imgFile = Image::make($this->image->getRealPath());
+            $imgFile->resize(null, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
         }
+
+
+
+
 
         Administrator::create(array_merge($this->validate(), ['image' => $this->fileName]));
         flash('Administrator created')->success();

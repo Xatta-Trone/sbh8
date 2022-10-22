@@ -63,7 +63,7 @@
 
                         @if ($oldImage)
                             <div class="col-md-6">
-                                Old photo:
+                                Current photo:
                                 <img src="{{ url("uploads/$oldImage") }}" height="250" width="auto">
                             </div>
                         @endif

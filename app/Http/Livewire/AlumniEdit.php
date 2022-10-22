@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Admin\Alumni;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use App\Models\Admin\Alumni;
 use Livewire\WithFileUploads;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AlumniEdit extends Component
@@ -51,7 +52,12 @@ class AlumniEdit extends Component
 
         if ($this->image != null) {
             $this->fileName = 'alumni/' . Str::slug($this->name) . '-' . time() . '.' . $this->image->extension();
-            $this->image->storeAs('', $this->fileName);
+            // $this->image->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            $imgFile = Image::make($this->image->getRealPath());
+            $imgFile->resize(null, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
             Storage::delete($this->oldImage);
         } else {
             $this->fileName = $this->oldImage;

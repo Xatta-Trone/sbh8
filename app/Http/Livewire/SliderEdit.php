@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Admin\Slider;
 use Livewire\WithFileUploads;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class SliderEdit extends Component
@@ -47,7 +48,12 @@ class SliderEdit extends Component
     {
         if ($this->image != null) {
             $this->fileName = 'sliders/' . Str::random(12)  . '-' . time() . '.' . $this->image->extension();
-            $this->image->storeAs('', $this->fileName);
+            // $this->image->storeAs('', $this->fileName);
+            $public_path = public_path('/uploads/' . $this->fileName);
+            $imgFile = Image::make($this->image->getRealPath());
+            $imgFile->resize(null, 760, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($public_path);
             Storage::delete($this->oldImage);
         } else {
             $this->fileName = $this->oldImage;
