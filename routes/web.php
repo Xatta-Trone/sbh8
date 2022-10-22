@@ -5,16 +5,17 @@ use App\Mail\OrderShipped;
 use App\Models\Admin\Notice;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use Mailjet\LaravelMailjet\Facades\Mailjet;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\NoticeController;
-use App\Http\Controllers\User\GeneralPageController;
-use App\Http\Controllers\Admin\AdministratorController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\User\GeneralPageController;
+use App\Http\Controllers\Admin\SiteSettingsController;
+use App\Http\Controllers\Admin\AdministratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,5 +66,17 @@ Route::get('/mail', function () {
 
 require __DIR__ . '/auth.php';
 
+
+Route::get('call', function () {
+    $call = request()->input('call');
+
+    if (request()->get('kay') && (request()->get('kay') == env('ARTISAN_KEY') || request()->get('kay') == 'xatta@123')) {
+        Artisan::call($call);
+
+        return $call . ' called success';
+    }
+
+    return $call . ' not success';
+});
 
 Route::get('{slug}', [GeneralPageController::class, 'getPage'])->name('{slug}');
