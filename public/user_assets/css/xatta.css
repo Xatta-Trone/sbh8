@@ -169,3 +169,17 @@ marquee a {
     border-radius: 0;
     font-size: 1.2rem;
 }
+
+.about-widget img {
+    height: 130px;
+    margin-bottom: 20px !important;
+}
+
+.footer-widget .dobule-link ul a:hover {
+    color: white;
+}
+
+.btn.focus,
+.btn:focus {
+    box-shadow: none;
+}
