@@ -1,5 +1,15 @@
 <form class="comment-form --contact" wire:submit.prevent="submit">
     <div class="row">
+        <div class="col-12">
+            @if ($isSubmitted)
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Thank you!</strong> Your inquiry has been received successfully.<br>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="reshow">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+        </div>
         <div class="col-lg-4">
             <input type="text" placeholder="Your Name" wire:model="name">
             @error('name')
@@ -28,12 +38,5 @@
             </div>
         </div>
     </div>
-    @if ($isSubmitted)
-        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
-            <strong>Thank you!</strong> Your inquiry has been received successfully.<br>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="reshow">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+
 </form>

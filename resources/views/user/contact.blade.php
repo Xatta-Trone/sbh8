@@ -13,19 +13,15 @@
                         <div class="contact-info-warp">
                             <div class="contact-info">
                                 <h4>Address</h4>
-                                <p>40 Baria Street 133/2, NewYork City, US</p>
+                                <p>{{$address}}</p>
                             </div>
                             <div class="contact-info">
                                 <h4>Phone</h4>
-                                <p>(+88) 111 555 666</p>
+                                <p>{{$phone}}</p>
                             </div>
                             <div class="contact-info">
                                 <h4>Email</h4>
-                                <p>infodeercreative@gmail.com</p>
-                            </div>
-                            <div class="contact-info">
-                                <h4>Working time</h4>
-                                <p>Monday - Friday: 08 AM - 06 PM</p>
+                                <p>{{ $email }}</p>
                             </div>
                         </div>
                     </div>
