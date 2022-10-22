@@ -1,13 +1,17 @@
 <?php
 
-use App\Http\Controllers\Admin\AdministratorController;
-use App\Http\Controllers\Admin\AlumniController;
+use Mailjet\Resources;
+use App\Mail\OrderShipped;
 use App\Models\Admin\Notice;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Mailjet\LaravelMailjet\Facades\Mailjet;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\User\GeneralPageController;
+use App\Http\Controllers\Admin\AdministratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,5 +53,24 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/mail', function () {
+    // $mj = Mailjet::getClient();
+
+    // $body = [
+    //     'FromEmail' => "monzurul.inovace@gmail.com",
+    //     'FromName' => "From name to be displayed in Inbox",
+    //     'Subject' => "New Website Enquiry",
+    //     'MJ-TemplateID' => 123456789,
+    //     'MJ-TemplateLanguage' => true,
+    //     'Vars' => json_decode(json_encode(['asdf' => 'sdf']), true),
+    //     'Recipients' => [['Email' => "monzurul.ce.buet@gmail.com"]]
+    // ];
+
+    // $response = $mj->post(Resources::$Email, ['body' => $body]);
+
+
+    Mail::to('monzurul.ce.buet@gmail.com')->send(new OrderShipped());
+});
 
 require __DIR__ . '/auth.php';
