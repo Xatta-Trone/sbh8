@@ -23,6 +23,14 @@
     <link rel="stylesheet" href="{{ asset('user_assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('user_assets/css/xatta.css') }}" />
 
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    @stack('styles')
+    @livewireStyles
+
 
     <!--[if lt IE 9]>
  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -90,6 +98,9 @@
     <script src="{{ asset('user_assets/js/masonry.pkgd.min.js') }} "></script>
     <script src="{{ asset('user_assets/js/magnific-popup.min.js') }} "></script>
     <script src="{{ asset('user_assets/js/main.js') }} "></script>
+
+    @stack('scripts')
+    @livewireScripts
 
 </body>
 

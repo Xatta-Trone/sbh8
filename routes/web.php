@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\User\GeneralPageController;
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('notices', [GeneralPageController::class, 'notice'])->name('notice');
 Route::get('administration', [GeneralPageController::class, 'administration'])->name('administration');
 Route::get('alumni/{slug}', [GeneralPageController::class, 'alumniDetail'])->name('alumniDetail');
 Route::get('alumni', [GeneralPageController::class, 'alumni'])->name('alumni');
+Route::get('contact', [GeneralPageController::class, 'contact'])->name('contact');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);
@@ -41,6 +43,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('notices', NoticeController::class);
     Route::resource('administrator', AdministratorController::class);
     Route::resource('alumins', AlumniController::class);
+    Route::resource('contacts', ContactController::class);
 
 
     Route::get('/', function () {

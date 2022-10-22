@@ -47,4 +47,9 @@ class GeneralPageController extends Controller
 
         return view('user.alumniDetail', compact('alumni'));
     }
+
+    public function contact()
+    {
+        return view('user.contact');
+    }
 }

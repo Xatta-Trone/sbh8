@@ -13,7 +13,7 @@
                 <li><a href="#">Activities</a></li>
                 <li><a href="{{ route('alumni') }}">Alumni</a></li>
                 <li><a href="{{ route('notice') }}">Notice Board</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </div>
     </nav>
