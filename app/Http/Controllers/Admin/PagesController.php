@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Page;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -24,7 +25,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -57,7 +58,8 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = Page::findOrFail($id);
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -80,6 +82,9 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Page::findOrFail($id)->delete()) {
+            flash('Page deleted')->success();
+            return redirect()->back();
+        }
     }
 }
