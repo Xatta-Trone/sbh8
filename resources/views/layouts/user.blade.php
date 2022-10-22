@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Unica - University Template</title>
+    <title>{{ $title ?? config('app.name', 'Sher-E-Bangla Hall, BUET') }}</title>
     <meta charset="UTF-8">
     <meta name="description" content="Unica University Template">
     <meta name="keywords" content="event, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link href="{{ asset('user_assets/img/favicon.ico') }}" rel="shortcut icon" />
+    <link href="{{ $logo }}" rel="shortcut icon" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
@@ -31,6 +31,9 @@
     @stack('styles')
     @livewireStyles
 
+    {{-- settings links --}}
+    {!! $links !!}
+
 
     <!--[if lt IE 9]>
  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -46,24 +49,15 @@
     </div>
 
     <!-- header section -->
-    <header class="header-section">
+    <header class="header-section d-none d-lg-block">
         <div class="container">
             <!-- logo -->
-            <a href="index.html" class="site-logo"><img src="{{ asset('user_assets/img/logo.png') }}"
-                    alt=""></a>
+            <a href="{{ route('home') }}" class="site-logo pt-0"><img src="{{ $logo }}" height="50"
+                    alt=""><span class="header-name">{!! $name_short !!} <br> Bangladesh University of Engineering & Technology (BUET)</span></a>
             <div class="nav-switch">
                 <i class="fa fa-bars"></i>
             </div>
-            <div class="header-info">
-                <div class="hf-item">
-                    <i class="fa fa-clock-o"></i>
-                    <p><span>Working time:</span>Monday - Friday: 08 AM - 06 PM</p>
-                </div>
-                <div class="hf-item">
-                    <i class="fa fa-map-marker"></i>
-                    <p><span>Find us:</span>40 Baria Street 133/2, New York City, US</p>
-                </div>
-            </div>
+
         </div>
     </header>
     <!-- header section end-->
@@ -101,6 +95,9 @@
 
     @stack('scripts')
     @livewireScripts
+
+    {{-- settings scripts --}}
+    {!! $scripts !!}
 
 </body>
 

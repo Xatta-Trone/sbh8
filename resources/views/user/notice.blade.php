@@ -1,4 +1,7 @@
 <x-user-layout>
+     <x-slot name="title">
+       Notices
+    </x-slot>
 
     <div class="container">
         <div class="row">

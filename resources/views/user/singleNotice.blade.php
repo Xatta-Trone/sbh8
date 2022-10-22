@@ -1,4 +1,7 @@
 <x-user-layout>
+     <x-slot name="title">
+       {{ $notice->title ?? 'No page found'}}
+    </x-slot>
 
     <div class="container">
         <div class="row">

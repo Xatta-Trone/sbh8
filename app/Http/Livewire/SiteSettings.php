@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Admin\SiteSetting;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class SiteSettings extends Component
@@ -35,6 +36,11 @@ class SiteSettings extends Component
         foreach ($s as $setting) {
             $this->{$setting->key} = $setting->value;
         }
+    }
+
+    public function hydrate()
+    {
+        Cache::forget('site_settings');
     }
 
     public function submit($formData)

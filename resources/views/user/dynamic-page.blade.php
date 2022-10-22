@@ -1,5 +1,9 @@
 <x-user-layout>
 
+    <x-slot name="title">
+       {{$page->title ?? 'No page found'}}
+    </x-slot>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">

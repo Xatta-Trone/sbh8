@@ -1,4 +1,7 @@
 <x-user-layout>
+     <x-slot name="title">
+        {{ __('Current Administration') }}
+    </x-slot>
 
     <div class="container">
         <div class="row">

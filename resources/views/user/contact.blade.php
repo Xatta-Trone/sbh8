@@ -1,4 +1,7 @@
 <x-user-layout>
+   <x-slot name="title">
+        Contact
+    </x-slot>
 
 
     <!-- Courses section -->

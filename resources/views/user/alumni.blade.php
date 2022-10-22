@@ -1,4 +1,7 @@
 <x-user-layout>
+     <x-slot name="title">
+        {{ __('Alumins') }}
+    </x-slot>
 
     <div class="container">
         <div class="row">
