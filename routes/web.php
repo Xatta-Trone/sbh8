@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\User\GeneralPageController;
 use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\SiteSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('administrator', AdministratorController::class);
     Route::resource('alumins', AlumniController::class);
     Route::resource('contacts', ContactController::class);
+    Route::resource('site-settings', SiteSettingsController::class);
 
 
     Route::get('/', function () {
