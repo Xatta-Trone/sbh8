@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardPageController;
 use Mailjet\Resources;
 use App\Mail\OrderShipped;
 use App\Models\Admin\Notice;
@@ -48,15 +49,13 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('sliders', SliderController::class);
 
 
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('home');
-
+    Route::get('/', [AdminDashboardPageController::class, 'index'])->name('home');
 
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('admin.home');
+    // return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/mail', function () {

@@ -1,5 +1,8 @@
 <div class="row">
     <div class="col-md-12">
+        <div class="alert alert-info">The admin will get an email with the login password automatically.</div>
+    </div>
+    <div class="col-md-12">
         <form wire:submit.prevent="submit">
             <div class="">
                 <div class="form-group">
