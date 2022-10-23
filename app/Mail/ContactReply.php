@@ -57,4 +57,16 @@ class ContactReply extends Mailable
     {
         return [];
     }
+
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->markdown('emails.contact.reply')->subject("[SBH] " . $this->subject,);
+        // ->from('monzurul.inovace@gmail.com');
+    }
 }
