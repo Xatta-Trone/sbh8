@@ -46,8 +46,8 @@ class NoticeEdit extends Component
     public function submit()
     {
         $this->validate();
-        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
-        $user =  Notice::find($this->noticeId)->update(array_merge($this->validate(), ['description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
+        // $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        $user =  Notice::find($this->noticeId)->update(array_merge($this->validate(), []));
         flash('Notice updated')->success();
         return redirect()->route('admin.notices.index');
     }

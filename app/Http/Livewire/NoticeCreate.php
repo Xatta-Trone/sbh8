@@ -33,9 +33,9 @@ class NoticeCreate extends Component
     public function submit()
     {
         $this->validate();
-        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        // $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
 
-        Notice::create(array_merge($this->validate(), ['description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
+        Notice::create(array_merge($this->validate(), []));
         flash('Notice created')->success();
         return redirect()->route('admin.notices.index');
     }

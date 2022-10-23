@@ -93,7 +93,7 @@
                     onChange: function(contents, $editable) {
                         // console.log('onChange:', contents,contents == '<br>');
                         // @this.set('description', contents)
-                        const content = contents;
+                         const content = contents == '<br>' ? null : contents;
                         // console.log(content)
                         deb(content);
                     },

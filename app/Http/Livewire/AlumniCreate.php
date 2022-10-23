@@ -46,9 +46,9 @@ class AlumniCreate extends Component
             })->save($public_path);
         }
 
-        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        // $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
 
-        Alumni::create(array_merge($this->validate(), ['image' => $this->fileName, 'description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
+        Alumni::create(array_merge($this->validate(), ['image' => $this->fileName,]));
         flash('Alumni created')->success();
         return redirect()->route('admin.alumins.index');
     }
