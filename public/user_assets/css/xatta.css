@@ -185,6 +185,10 @@ marquee a {
     font-size: 1.1rem;
 }
 
+.notice-section {
+  margin-bottom: -3rem;
+}
+
 .notice-section li {
     background: transparent;
     padding: 25px 0;
