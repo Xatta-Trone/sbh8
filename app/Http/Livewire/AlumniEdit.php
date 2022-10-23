@@ -68,7 +68,7 @@ class AlumniEdit extends Component
 
         $formattedDescription  = $this->description ? $this->extractImage($this->description, $this->oldDescription) : $this->description;
 
-        Alumni::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName, 'description' => $formattedDescription]));
+        Alumni::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName, 'description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
         flash('Alumni updated')->success();
         return redirect()->route('admin.alumins.index');
     }

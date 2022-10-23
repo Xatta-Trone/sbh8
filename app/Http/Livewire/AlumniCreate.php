@@ -5,12 +5,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Admin\Alumni;
+use App\Trait\SummerNoteImageExtract;
 use Livewire\WithFileUploads;
 use Intervention\Image\Facades\Image;
 
 class AlumniCreate extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, SummerNoteImageExtract;
 
     public $name;
     public $designation;
@@ -45,7 +46,9 @@ class AlumniCreate extends Component
             })->save($public_path);
         }
 
-        Alumni::create(array_merge($this->validate(), ['image' => $this->fileName]));
+        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+
+        Alumni::create(array_merge($this->validate(), ['image' => $this->fileName, 'description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
         flash('Alumni created')->success();
         return redirect()->route('admin.alumins.index');
     }

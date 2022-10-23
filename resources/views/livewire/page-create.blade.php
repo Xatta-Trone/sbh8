@@ -93,9 +93,9 @@
                     onChange: function(contents, $editable) {
                         // console.log('onChange:', contents,contents == '<br>');
                         // @this.set('content', contents)
-                        const content = contents == '<br>' ? null : contents;
+                        // const content = contents == '<br>' ? null : contents;
                         // console.log(content)
-                        deb(content);
+                        deb(contents);
                     },
                     onInit: function() {
                         console.log('Summernote is launched');

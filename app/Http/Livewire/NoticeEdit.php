@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Admin\Notice;
 use Livewire\Component;
+use App\Models\Admin\Notice;
+use App\Trait\SummerNoteImageExtract;
 
 class NoticeEdit extends Component
 {
+    use SummerNoteImageExtract;
+
     public $title;
     public $description;
     public $url;
@@ -43,7 +46,8 @@ class NoticeEdit extends Component
     public function submit()
     {
         $this->validate();
-        $user =  Notice::find($this->noticeId)->update($this->validate());
+        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        $user =  Notice::find($this->noticeId)->update(array_merge($this->validate(), ['description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
         flash('Notice updated')->success();
         return redirect()->route('admin.notices.index');
     }

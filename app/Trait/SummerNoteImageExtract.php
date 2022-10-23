@@ -12,8 +12,6 @@ trait SummerNoteImageExtract
 {
     public function extractImage($newContent = null, $oldContent = null)
     {
-        if ($newContent == null) return null;
-
 
         $newContentDom = new \DomDocument();
         @$newContentDom->loadHtml(mb_convert_encoding($newContent, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
