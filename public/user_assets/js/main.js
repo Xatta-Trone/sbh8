@@ -65,62 +65,62 @@ $(window).on('load', function() {
     /*------------------
 		Counter
 	--------------------*/
-    $(".counter").countdown("2018/07/01", function (event) {
-        $(this).html(
-            event.strftime(
-                "<div class='counter-item'><h4>%D</h4>Days</div>" +
-                    "<div class='counter-item'><h4>%H</h4>hours</div>" +
-                    "<div class='counter-item'><h4>%M</h4>Mins</div>" +
-                    "<div class='counter-item'><h4>%S</h4>secs</div>"
-            )
-        );
-    });
+    // $(".counter").countdown("2018/07/01", function (event) {
+    //     $(this).html(
+    //         event.strftime(
+    //             "<div class='counter-item'><h4>%D</h4>Days</div>" +
+    //                 "<div class='counter-item'><h4>%H</h4>hours</div>" +
+    //                 "<div class='counter-item'><h4>%M</h4>Mins</div>" +
+    //                 "<div class='counter-item'><h4>%S</h4>secs</div>"
+    //         )
+    //     );
+    // });
 
     /*------------------
 		Gallery
 	--------------------*/
-    $(".gallery")
-        .find(".gallery-item")
-        .each(function () {
-            var pi_height1 = $(this).width(),
-                pi_height2 = pi_height1 / 2;
+    // $(".gallery")
+    //     .find(".gallery-item")
+    //     .each(function () {
+    //         var pi_height1 = $(this).width(),
+    //             pi_height2 = pi_height1 / 2;
 
-            if ($(this).hasClass("gi-long") && window_w > 991) {
-                $(this).css("height", pi_height2);
-            } else {
-                $(this).css("height", Math.abs(pi_height1));
-            }
-        });
+    //         if ($(this).hasClass("gi-long") && window_w > 991) {
+    //             $(this).css("height", pi_height2);
+    //         } else {
+    //             $(this).css("height", Math.abs(pi_height1));
+    //         }
+    //     });
 
-    $(".gallery").masonry({
-        itemSelector: ".gallery-item",
-        columnWidth: ".grid-sizer",
-    });
+    // $(".gallery").masonry({
+    //     itemSelector: ".gallery-item",
+    //     columnWidth: ".grid-sizer",
+    // });
 
     /*------------------
 		Testimonial
 	--------------------*/
-    $(".testimonial-slider").owlCarousel({
-        loop: true,
-        nav: true,
-        dots: true,
-        animateOut: "fadeOutUp",
-        animateIn: "fadeInUp",
-        navText: [
-            '<i class="fa fa-angle-left"></i>',
-            '</i><i class="fa fa-angle-right"></i>',
-        ],
-        items: 1,
-        autoplay: true,
-    });
+    // $(".testimonial-slider").owlCarousel({
+    //     loop: true,
+    //     nav: true,
+    //     dots: true,
+    //     animateOut: "fadeOutUp",
+    //     animateIn: "fadeInUp",
+    //     navText: [
+    //         '<i class="fa fa-angle-left"></i>',
+    //         '</i><i class="fa fa-angle-right"></i>',
+    //     ],
+    //     items: 1,
+    //     autoplay: true,
+    // });
 
     /*------------------
 		Popup
 	--------------------*/
-    $(".img-popup").magnificPopup({
-        type: "image",
-        mainClass: "img-popup-warp",
-        removalDelay: 400,
-    });
+    // $(".img-popup").magnificPopup({
+    //     type: "image",
+    //     mainClass: "img-popup-warp",
+    //     removalDelay: 400,
+    // });
 })(jQuery);
 
