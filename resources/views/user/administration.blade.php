@@ -1,5 +1,5 @@
 <x-user-layout>
-     <x-slot name="title">
+    <x-slot name="title">
         {{ __('Current Administration') }}
     </x-slot>
 
@@ -19,10 +19,11 @@
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Provost) as $admin)
                         <div class="col-md-3 d-flex mx-auto">
                             <div class="card w-100">
-                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
-                                <div class="card-body py-3">
-                                    <h5 class="mb-0">{{ $admin->name }}</h5>
-                                    <span>{!! $admin->description !!}</span>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})">
+                                </div>
+                                <div class="card-body py-3  px-1">
+                                    <h5 class="mb-0 admin-name mt-2">{{ $admin->name }}</h5>
+                                    <div class="admin-detail  mt-2" > <pre>{!! $admin->description !!}</pre> </div>
                                 </div>
                             </div>
                         </div>
@@ -37,10 +38,12 @@
                     @foreach ($administration->where('type', App\Enums\AdministratorType::AssistantProvost) as $admin)
                         <div class="col-md-3 d-flex  mx-auto">
                             <div class="card w-100">
-                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
-                                <div class="card-body py-3">
-                                    <h5 class="mb-0">{{ $admin->name }}</h5>
-                                    <span>{!! $admin->description !!}</span>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})">
+                                </div>
+                                <div class="card-body py-3 px-1">
+                                    <h5 class="mb-0 admin-name">{{ $admin->name }}</h5>
+                                    <div class="admin-designation mt-2">{{ $admin->designation }}</div>
+                                    <div class="admin-detail mt-2" > <pre>{!! $admin->description !!}</pre> </div>
                                 </div>
                             </div>
                         </div>
@@ -51,14 +54,16 @@
                     <h4>STAFFS</h4>
                 </div>
 
-                <div class="row text-center">
+                <div class="row text-center ">
                     @foreach ($administration->where('type', App\Enums\AdministratorType::Staff)->sortBy('designation') as $admin)
-                        <div class="col-md-3 d-flex mx-auto">
+                        <div class="col-md-3 d-flex">
                             <div class="card w-100 mb-3">
-                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})"></div>
-                                <div class="card-body py-3">
-                                    <h5 class="mb-0">{{ $admin->name }}</h5>
-                                    <span>{!! $admin->designation !!} <br>{!! $admin->description !!}</span>
+                                <div class="img-custom rounded" style="background-image: url({{ $admin->image_path }})">
+                                </div>
+                                <div class="card-body py-3 px-1">
+                                    <h5 class="mb-0 admin-name">{{ $admin->name }}</h5>
+                                    <div class="admin-designation mt-2">{{ $admin->designation }}</div>
+                                    <div class="admin-detail mt-2" > <pre>{!! $admin->description !!}</pre> </div>
                                 </div>
                             </div>
                         </div>
@@ -86,6 +91,8 @@
             line-height: 1.5;
         }
     </style>
+
+
 
 
 </x-user-layout>

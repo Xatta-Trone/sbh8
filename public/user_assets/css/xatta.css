@@ -204,3 +204,9 @@ marquee a {
 .btn:focus {
     box-shadow: none;
 }
+
+.admin-detail pre {
+  font-family: inherit;
+  font-size: 90%;
+  line-height: 1.8;
+}

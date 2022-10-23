@@ -41,9 +41,9 @@
 
                     <label for="description">Contact information</label>
                     <div>
-                        <textarea wire:model="description" class="form-control" rows="8"></textarea>
-                        <small id="emailHelp" class="form-text text-muted">Example: Email:monzurul.ce.buet@gmail.com;
-                            Phone: 01521112102</small>
+                        <textarea wire:model="description" class="form-control" placeholder="email@example.com &#10;+8801521112102" rows="8"></textarea>
+                        <small class="text-danger">Please write the email in the first line and phone number in the second line to avoid the styling issue. example::</small>
+                        <small class="form-text text-danger">monzurul.ce.buet@gmail.com <br> +880 152 1112 102</small>
                     </div>
 
                     @error('description')
