@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\Admin\Administrator;
+use App\Trait\SummerNoteImageExtract;
 use Intervention\Image\Facades\Image;
 
 class AdministratorCreate extends Component

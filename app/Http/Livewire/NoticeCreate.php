@@ -4,10 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Enums\NoticeStatus;
 use App\Models\Admin\Notice;
+use App\Trait\SummerNoteImageExtract;
 use Livewire\Component;
 
 class NoticeCreate extends Component
 {
+    use SummerNoteImageExtract;
+
+
     public $title;
     public $description;
     public $url;
@@ -29,7 +33,9 @@ class NoticeCreate extends Component
     public function submit()
     {
         $this->validate();
-        Notice::create(array_merge($this->validate(), []));
+        $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+
+        Notice::create(array_merge($this->validate(), ['description' => ($formattedDescription == '<br>' ? null : $formattedDescription)]));
         flash('Notice created')->success();
         return redirect()->route('admin.notices.index');
     }
