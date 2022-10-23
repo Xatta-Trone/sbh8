@@ -69,6 +69,4 @@ class AppServiceProvider extends ServiceProvider
         SEOMeta::addKeyword($settings->where('key', 'keywords')->first()->value);
         OpenGraph::addImage(url('uploads/' . $settings->where('key', 'og_image')->first()->value));
     }
-
-
 }
