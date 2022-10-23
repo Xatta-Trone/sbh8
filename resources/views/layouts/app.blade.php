@@ -19,6 +19,8 @@
 
     </head>
     <body class="font-sans antialiased">
+        <script>0</script>
+   <!-- rest of the code -->
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 

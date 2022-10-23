@@ -43,6 +43,8 @@
 </head>
 
 <body>
+    <script>0</script>
+   <!-- rest of the code -->
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>

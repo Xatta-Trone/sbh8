@@ -87,6 +87,8 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <script>0</script>
+   <!-- rest of the code -->
     <div class="wrapper">
 
         <!-- Preloader -->
