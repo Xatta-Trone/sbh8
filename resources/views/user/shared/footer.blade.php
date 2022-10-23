@@ -1,4 +1,4 @@
-<footer class="footer-section pt-5">
+<footer class="footer-section mt-5">
     <div class="container footer-top">
         <div class="row">
             <!-- widget -->
