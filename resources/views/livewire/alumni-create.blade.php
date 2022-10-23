@@ -45,7 +45,8 @@
                     @endif
                     <div>
                         <label for="description">Image (max file size 1MB)</label>
-                        <input type="file" wire:model="image" class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg">
+                        <input type="file" wire:model="image" class="form-control" accept="image/png, image/jpeg, image/jpg">
+                        <small class="text-danger">Please wait until you see the image here.</small>
                     </div>
 
                     @error('image')

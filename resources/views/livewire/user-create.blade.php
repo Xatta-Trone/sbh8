@@ -3,7 +3,7 @@
         <form wire:submit.prevent="submit">
             <div class="">
                 <div class="form-group">
-                    <label for="exampleInputEmailName">Name</label>
+                    <label for="exampleInputEmailName">Name   <span class="badge badge-danger">required</span> </label>
                     <input type="text" class="form-control" id="exampleInputEmailName" placeholder="Enter name"
                         wire:model="name">
                     @error('name')
@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Email address   <span class="badge badge-danger">required</span> </label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
                         wire:model="email">
                     @error('email')

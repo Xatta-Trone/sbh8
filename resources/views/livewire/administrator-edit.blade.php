@@ -41,8 +41,10 @@
 
                     <label for="description">Contact information</label>
                     <div>
-                        <textarea wire:model="description" class="form-control" placeholder="email@example.com &#10;+8801521112102" rows="8"><i class="fa fa-envelope" aria-hidden="true"></i></textarea>
-                        <small class="text-danger">Please write the email in the first line and phone number in the second line to avoid the styling issue. example::</small>
+                        <textarea wire:model="description" class="form-control" placeholder="email@example.com &#10;+8801521112102"
+                            rows="8"><i class="fa fa-envelope" aria-hidden="true"></i></textarea>
+                        <small class="text-danger">Please write the email in the first line and phone number in the
+                            second line to avoid the styling issue. example::</small>
                         <small class="form-text text-danger">monzurul.ce.buet@gmail.com <br> +880 152 1112 102</small>
 
                     </div>
@@ -77,7 +79,8 @@
                     <div>
                         <label for="description">Image (max file size 1MB)</label>
                         <input type="file" wire:model="image" class="form-control"
-                            accept="image/png, image/gif, image/jpeg, image/jpg">
+                            accept="image/png, image/jpeg, image/jpg">
+                        <small class="text-danger">Please wait until you see the image here.</small>
                     </div>
 
                     @error('image')

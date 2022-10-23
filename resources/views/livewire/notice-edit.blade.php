@@ -3,7 +3,7 @@
         <form wire:submit.prevent="submit">
             <div class="">
                 <div class="form-group">
-                    <label for="exampleInputEmailName">Title</label>
+                    <label for="exampleInputEmailName">Title   <span class="badge badge-danger">required</span> </label>
                     <input type="text" class="form-control" id="exampleInputEmailName" placeholder="Enter notice title"
                         wire:model="title">
                     @error('title')
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleSelectRounded0">Publish status</label>
+                    <label for="exampleSelectRounded0">Publish status   <span class="badge badge-danger">required</span> </label>
                     <select class="custom-select rounded-0" id="exampleSelectRounded0" wire:model="status">
                         <option value="" selected>Select an option</option>
                         <option value="{{ App\Enums\NoticeStatus::Published }}">Published</option>

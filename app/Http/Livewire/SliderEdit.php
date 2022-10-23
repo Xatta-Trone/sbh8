@@ -16,7 +16,7 @@ class SliderEdit extends Component
     public $header_text;
     public $content_text;
     public $url;
-    public $image;
+    public $image = null;
     public $status;
     public $fileName = null;
     public $oldImage = null;
@@ -27,7 +27,7 @@ class SliderEdit extends Component
     protected $rules = [
         'header_text' => 'sometimes|nullable|max:255',
         'content_text' => 'sometimes|nullable|max:500',
-        'image' => 'required|image|max:1024',
+        'image' => 'sometimes|nullable|image|max:1024',
         'url' => 'sometimes|nullable',
         'status' => 'required',
     ];

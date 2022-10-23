@@ -1,5 +1,8 @@
 <div class="row">
     <div class="col-md-12">
+        <div class="alert alert-info">Only change the contents of this page; other options should not be changed; specially the title and the slug.</div>
+    </div>
+    <div class="col-md-12">
         <form wire:submit.prevent="submit">
             <div class="">
                 <div class="form-group">

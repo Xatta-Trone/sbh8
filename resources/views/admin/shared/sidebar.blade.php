@@ -50,18 +50,86 @@
                     <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Admins
+                            SBH Admins
                         </p>
                     </a>
                 </li>
 
+
                 <li class="nav-item">
-                    <a href="{{ route('admin.pages.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Pages
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Pages</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',2) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Welcome message</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',3) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>About Page</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',4) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>History Page</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',5) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Residents Page</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',6) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activities Page</p>
+                            </a>
+                        </li>
+
+                         <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',7) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>About SHBAA</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',8) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>member of SBHAA ?</p>
+                            </a>
+                        </li>
+
+                          <li class="nav-item">
+                            <a href="{{ route('admin.pages.edit',9) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Membership</p>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
                 </li>
 
                 <li class="nav-item">
@@ -77,7 +145,7 @@
                     <a href="{{ route('admin.alumins.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Alumni
+                            Notable Alumni
                         </p>
                     </a>
                 </li>
@@ -100,7 +168,7 @@
                     </a>
                 </li>
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('admin.sliders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
