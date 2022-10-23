@@ -12,6 +12,7 @@ class NoticeCreate extends Component
     public $description;
     public $url;
     public $status;
+    public $show_in_ns;
 
 
 
@@ -19,7 +20,8 @@ class NoticeCreate extends Component
         'title' => 'required',
         'url' => 'required_without:description',
         'description' => 'required_without:url',
-        'status' => 'required|integer'
+        'status' => 'required|integer',
+        'show_in_ns' => 'required|integer'
     ];
 
 

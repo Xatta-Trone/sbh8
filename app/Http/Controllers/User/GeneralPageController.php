@@ -19,11 +19,12 @@ class GeneralPageController extends Controller
     public function home()
     {
         $notices = Notice::select('id', 'title', 'created_at')->where('status', 1)->latest()->take(5)->get();
-        $sliders = Slider::latest()->take(5)->get();
+        $notices_ns = Notice::select('id', 'title', 'created_at')->where('status', 1)->where('show_in_ns', 1)->latest()->take(5)->get();
+        $sliders = Slider::latest()->where('status', 1)->take(5)->get();
         $provost = Administrator::where('type', AdministratorType::Provost)->where('status', 1)->first();
         $welcome_message = Page::where('slug', 'welcome-message')->where('status', 1)->first();
 
-        return view('welcome', compact('notices', 'sliders', 'provost', 'welcome_message'));
+        return view('welcome', compact('notices', 'sliders', 'provost', 'welcome_message', 'notices_ns'));
     }
 
     public function notice()
@@ -63,7 +64,7 @@ class GeneralPageController extends Controller
 
     public function alumni()
     {
-        $alumins = Alumni::where('status', 1)->select('id', 'name', 'designation', 'image')->orderBy('name')->paginate(32);
+        $alumins = Alumni::where('status', 1)->select('id', 'name', 'designation', 'image')->orderBy('name')->paginate(36);
 
         SEOTools::setTitle('Alumnins');
         SEOTools::opengraph()->setUrl(route('alumni'));

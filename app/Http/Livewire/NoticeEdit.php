@@ -12,6 +12,7 @@ class NoticeEdit extends Component
     public $url;
     public $status;
     public $noticeId;
+    public $show_in_ns;
 
 
 
@@ -22,7 +23,8 @@ class NoticeEdit extends Component
             'title' => 'required',
             'url' => 'required_without:description',
             'description' => 'required_without:url',
-            'status' => 'required|integer'
+            'status' => 'required|integer',
+            'show_in_ns' => 'required|integer'
         ];
     }
 
@@ -32,6 +34,7 @@ class NoticeEdit extends Component
         $this->description = $notice->description;
         $this->url = $notice->url;
         $this->status = $notice->status;
+        $this->show_in_ns = $notice->show_in_ns;
         $this->noticeId = $notice->id;
     }
 

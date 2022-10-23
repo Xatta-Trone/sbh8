@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col">
                     <marquee behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();">
-                        @forelse ($notices as $notice)
+                        @forelse ($notices_ns as $notice)
                             <a href="{{ route('singleNotice', $notice->slug) }}"
                                 target="_blank">{{ $notice->title }}</a>
                         @empty

@@ -37,6 +37,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="showInNS">Show in news scorll  <span class="badge badge-danger">required</span> </label>
+                    <select class="custom-select rounded-0" id="showInNS" wire:model="show_in_ns">
+                        <option value="" selected>Select an option</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    @error('show_in_ns')
+                        <span class="error text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="exampleSelectRounded0">Publish status   <span class="badge badge-danger">required</span> </label>
                     <select class="custom-select rounded-0" id="exampleSelectRounded0" wire:model="status">
                         <option value="" selected>Select an option</option>
