@@ -20,7 +20,7 @@
                                 </div>
                                 <a class="card-body py-3 text-dark stretched-link"
                                     href="{{ route('alumniDetail', $alumni->slug) }}">
-                                    <h5 class="mb-0">{{ $alumni->name }}</h5>
+                                    <h5 class="mb-2">{{ $alumni->name }}</h5>
                                     <span>{{ $alumni->designation }}</span>
                                 </a>
                             </div>

@@ -48,11 +48,17 @@
                     </li>
 
 
+
+
                     <li class="nav-item {{ request()->is('notices*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('notice') }}">notice board</a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('contact') }}">contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.buet.ac.bd/" target="_blank">BUET Home </a>
                     </li>
 
 

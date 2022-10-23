@@ -1,4 +1,4 @@
-<footer class="footer-section mt-5">
+<footer class="footer-section pt-5">
     <div class="container footer-top">
         <div class="row">
             <!-- widget -->
@@ -56,9 +56,10 @@
                 Copyright &copy;
                 <script>
                     document.write(new Date().getFullYear());
-                </script> All rights reserved Sher-E-Banlga Hall, BUET | This website is developed by <a
-                    href="https://www.facebook.com/monzurul.islam1112/" target="_blank">Monzurul ISLAM</a> | Template by <a href="https://colorlib.com"
-                    target="_blank">Colorlib</a>
+                </script> All rights reserved {{ $name_short ?? "Sher-e-Banlga Hall, BUET" }} | This website is developed by <a
+                    href="https://www.facebook.com/monzurul.islam1112/" target="_blank">Monzurul ISLAM</a>
+                    {{-- | Template by <a href="https://colorlib.com"
+                    target="_blank">Colorlib</a> --}}
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
         </div>

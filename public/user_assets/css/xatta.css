@@ -18,6 +18,11 @@
 .notice-title a {
     color: black;
     text-transform: capitalize;
+     font-weight: 500;
+}
+
+.notice-title a:hover {
+  text-decoration: underline;
 }
 
 .notice-description a {
@@ -84,8 +89,14 @@ iframe {
 }
 
 .nav-link {
-    padding: 25px 20px !important;
+    padding: 25px 18px !important;
     display: inline-block;
+}
+
+
+.nav-link:hover {
+  background: white;
+  color: #7b0100;
 }
 
 .navbar-toggler-icon i {

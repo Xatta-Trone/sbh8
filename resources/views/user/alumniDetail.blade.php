@@ -18,7 +18,7 @@
                             <div class="img rounded" style="background-image: url({{ $alumni->image_path }})">
                             </div>
                             <div class="card-body py-3 text-dark">
-                                <h5 class="mb-0">{{ $alumni->name }}</h5>
+                                <h5 class="mb-2">{{ $alumni->name }}</h5>
                                 <span>{{ $alumni->designation }}</span>
                             </div>
                         </div>
