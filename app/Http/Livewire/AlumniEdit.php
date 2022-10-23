@@ -5,18 +5,20 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Admin\Alumni;
+use App\Trait\SummerNoteImageExtract;
 use Livewire\WithFileUploads;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AlumniEdit extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, SummerNoteImageExtract;
 
     public $name;
     public $designation;
     public $image;
     public $description;
+    public $oldDescription = null;
     public $status;
     public $fileName = null;
     public $adminId;
@@ -39,6 +41,7 @@ class AlumniEdit extends Component
         $this->designation = $alumni->designation;
         $this->oldImage = $alumni->image;
         $this->description = $alumni->description;
+        $this->oldDescription = $alumni->description;
         $this->status = $alumni->status;
     }
 
@@ -63,7 +66,9 @@ class AlumniEdit extends Component
             $this->fileName = $this->oldImage;
         }
 
-        Alumni::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName]));
+        $formattedDescription  = $this->description ? $this->extractImage($this->description, $this->oldDescription) : $this->description;
+
+        Alumni::find($this->adminId)->update(array_merge($this->validate(), ['image' => $this->fileName, 'description' => $formattedDescription]));
         flash('Alumni updated')->success();
         return redirect()->route('admin.alumins.index');
     }
