@@ -8,6 +8,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Support\Facades\Schema;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -41,32 +42,55 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('shared.pagination');
         Paginator::defaultSimpleView('shared.pagination');
 
+        if (Schema::hasTable('site_settings')) {
+            // sharing site settings data to all views
+            $settings  = Cache::remember('site_settings', 24 * 60 * 60, function () {
+                return SiteSetting::where('status', 1)->get();
+            });
+
+            View::share('logo', url('uploads/' . $settings->where('key', 'logo')->first()->value));
+            View::share('og_image', url('uploads/' . $settings->where('key', 'og_image')->first()->value));
+            View::share('site_name', $settings->where('key', 'name')->first()->value);
+            View::share('name_short', $settings->where('key', 'name_short')->first()->value);
+            View::share('keywords', $settings->where('key', 'keywords')->first()->value);
+            View::share('description', $settings->where('key', 'description')->first()->value);
+            View::share('address', $settings->where('key', 'address')->first()->value);
+            View::share('phone', $settings->where('key', 'phone')->first()->value);
+            View::share('email', $settings->where('key', 'email')->first()->value);
+            View::share('description_short', $settings->where('key', 'description_short')->first()->value);
+            View::share('scripts', $settings->where('key', 'scripts')->first()->value);
+            View::share('links', $settings->where('key', 'links')->first()->value);
+
+            SEOTools::setTitle($settings->where('key', 'name')->first()->value);
+            SEOTools::setDescription($settings->where('key', 'description')->first()->value);
+            SEOTools::opengraph()->setUrl(url(''));
+            SEOTools::setCanonical(url(''));
+            OpenGraph::setUrl(url(''));
+            SEOMeta::addKeyword($settings->where('key', 'keywords')->first()->value);
+            OpenGraph::addImage(url('uploads/' . $settings->where('key', 'og_image')->first()->value));
+        } else {
+            View::share('logo', url('uploads/'));
+            View::share('og_image', url('uploads/'));
+            View::share('site_name', 'site_name');
+            View::share('name_short', 'name_short');
+            View::share('keywords', 'keywords');
+            View::share('description', 'description');
+            View::share('address', 'address');
+            View::share('phone', 'address');
+            View::share('email', 'address');
+            View::share('description_short', 'nodata');
+            View::share('scripts', 'nodata');
+            View::share('links', 'nodata');
+
+            SEOTools::setTitle('nodata');
+            SEOTools::setDescription('nodata');
+            SEOTools::opengraph()->setUrl(url(''));
+            SEOTools::setCanonical(url(''));
+            OpenGraph::setUrl(url(''));
+            SEOMeta::addKeyword('nodata');
+            OpenGraph::addImage('nodata');
+        }
 
 
-        // sharing site settings data to all views
-        $settings  = Cache::remember('site_settings', 24 * 60 * 60, function () {
-            return SiteSetting::where('status', 1)->get();
-        });
-
-        View::share('logo', url('uploads/' . $settings->where('key', 'logo')->first()->value));
-        View::share('og_image', url('uploads/' . $settings->where('key', 'og_image')->first()->value));
-        View::share('site_name', $settings->where('key', 'name')->first()->value);
-        View::share('name_short', $settings->where('key', 'name_short')->first()->value);
-        View::share('keywords', $settings->where('key', 'keywords')->first()->value);
-        View::share('description', $settings->where('key', 'description')->first()->value);
-        View::share('address', $settings->where('key', 'address')->first()->value);
-        View::share('phone', $settings->where('key', 'phone')->first()->value);
-        View::share('email', $settings->where('key', 'email')->first()->value);
-        View::share('description_short', $settings->where('key', 'description_short')->first()->value);
-        View::share('scripts', $settings->where('key', 'scripts')->first()->value);
-        View::share('links', $settings->where('key', 'links')->first()->value);
-
-        SEOTools::setTitle($settings->where('key', 'name')->first()->value);
-        SEOTools::setDescription($settings->where('key', 'description')->first()->value);
-        SEOTools::opengraph()->setUrl(url(''));
-        SEOTools::setCanonical(url(''));
-        OpenGraph::setUrl(url(''));
-        SEOMeta::addKeyword($settings->where('key', 'keywords')->first()->value);
-        OpenGraph::addImage(url('uploads/' . $settings->where('key', 'og_image')->first()->value));
     }
 }
