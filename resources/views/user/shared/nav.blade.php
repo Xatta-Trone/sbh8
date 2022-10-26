@@ -61,6 +61,13 @@
                         <a class="nav-link" href="https://www.buet.ac.bd/" target="_blank">BUET Home </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link quadrat" href="https://reunion.sherebanglahall.buet.ac.bd/"
+                            target="_blank">Reunion
+                            2022</a>
+                    </li>
+
+
 
                 </ul>
 
@@ -68,4 +75,53 @@
         </nav>
 
     </div>
+
+    <style>
+        .nav-link {
+            padding: 25px 15px !important;
+            display: inline-block;
+        }
+
+        .quadrat {
+            /* -webkit-animation: NAME-YOUR-ANIMATION 1s infinite;
+
+            -moz-animation: NAME-YOUR-ANIMATION 1s infinite;
+
+            -o-animation: NAME-YOUR-ANIMATION 1s infinite;
+
+            animation: NAME-YOUR-ANIMATION 1s infinite;
+
+            animation-timing-function: linear; */
+
+            -moz-transition: all 1s ease-in-out;
+            -webkit-transition: all 1s ease-in-out;
+            -o-transition: all 1s ease-in-out;
+            -ms-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+            -moz-animation: NAME-YOUR-ANIMATION normal 1.5s infinite ease-in-out;
+            /* Firefox */
+            -webkit-animation: NAME-YOUR-ANIMATION normal 1.5s infinite ease-in-out;
+            /* Webkit */
+            -ms-animation: NAME-YOUR-ANIMATION normal 1.5s infinite ease-in-out;
+            /* IE */
+            animation: NAME-YOUR-ANIMATION normal 1.5s infinite ease-in-out;
+            /* IE 10+, Fx 29+ */
+        }
+
+        @-webkit-keyframes NAME-YOUR-ANIMATION {
+
+            0%,
+            49% {
+                background-color: white;
+                color: #7b0100;
+                /* border: 3px solid #e50000; */
+            }
+
+            50%,
+            100% {
+                background-color: #7b0100;
+                color: white;
+            }
+        }
+    </style>
 </div>
