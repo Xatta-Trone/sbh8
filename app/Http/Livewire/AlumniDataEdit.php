@@ -132,7 +132,9 @@ class AlumniDataEdit extends Component
             // $this->image->storeAs('', $this->fileName);
             $public_path = public_path('/uploads/' . $this->fileName);
             $imgFile = Image::make($this->image->getRealPath());
+            $imgFile->orientate();
             $imgFile->resize(null, 300, function ($constraint) {
+                $constraint->upsize();
                 $constraint->aspectRatio();
             })->save($public_path);
         } else {
