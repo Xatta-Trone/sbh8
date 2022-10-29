@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\AlumniData;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AlumniDataController extends Controller
 {
@@ -24,7 +26,7 @@ class AlumniDataController extends Controller
      */
     public function create()
     {
-        return view('admin.alumni.create');
+        return view('admin.alumni-data.create');
     }
 
     /**
@@ -57,8 +59,8 @@ class AlumniDataController extends Controller
      */
     public function edit($id)
     {
-        $alumni = Alumni::findOrFail($id);
-        return view('admin.alumni.edit', compact('alumni'));
+        $alumni = AlumniData::findOrFail($id);
+        return view('admin.alumni-data.edit', compact('alumni'));
     }
 
     /**
@@ -81,7 +83,7 @@ class AlumniDataController extends Controller
      */
     public function destroy($id)
     {
-        $alumni =  Alumni::findOrFail($id);
+        $alumni =  AlumniData::findOrFail($id);
         if ($alumni->image) {
             Storage::delete($alumni->image);
         }

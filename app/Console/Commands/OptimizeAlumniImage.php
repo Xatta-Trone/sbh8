@@ -42,17 +42,19 @@ class OptimizeAlumniImage extends Command
         AlumniData::chunkById(200, function ($alumins) {
             foreach ($alumins as $alumni) {
                 $this->info($alumni->image);
-                // $oldImg = public_path('uploads/') . $alumni->image;
-                // $public_path = public_path('uploads/' . $alumni->image);
-                // $imgFile = Image::make($oldImg);
-                // $imgFile->resize(null, 300, function ($constraint) {
-                //     $constraint->aspectRatio();
-                // })->save($public_path);
+                $imgName = explode("/", $alumni->image)[1];
+                $oldImg = public_path('uploads/alumni-img/') . $imgName;
+                // dd($oldImg);
+                $public_path = public_path('uploads/alumni-data/' . $imgName);
+                $imgFile = Image::make($oldImg);
+                $imgFile->resize(null, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($public_path);
                 // $alumni->update(['image' => 'alumni-data/' . $alumni->image]);
-                $old  = explode('/', $alumni->image);
-                $fixedName = implode('/', [$old[2], $old[3]]);
+                // $old  = explode('/', $alumni->image);
+                // $fixedName = implode('/', [$old[2], $old[3]]);
                 // dd(implode('/', [$old[2], $old[3]]));
-                $alumni->update(['image' => $fixedName]);
+                // $alumni->update(['image' => $fixedName]);
             }
         }, $column = 'id');
     }

@@ -51,10 +51,11 @@ class AlumniDataTable extends DataTableComponent
                     'alt' => $row->image,
                     'height' => 75
                 ]),
-            Column::make('Published', "status")
+            Column::make('Publish status', "status")
                 ->format(
-                    fn ($value, $row, Column $column) => $row->status ? 'Yes' : 'No'
+                    fn ($value, $row, Column $column) => ($row->status == 0  ? '<span class="badge badge-danger">Pending approval</span>' : $row->status) ? '<span class="badge badge-success">Published</span>' : '<span class="badge badge-danger">Not Published</span>'
                 )
+                ->html()
                 ->sortable(),
             Column::make("Last updated", "updated_at")
                 ->format(fn ($value, $row, Column $column) => $row->updated_at?->toDateTimeString())
