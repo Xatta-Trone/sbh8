@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\User\GeneralPageController;
 use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\AlumniDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('contacts', ContactController::class);
     Route::resource('site-settings', SiteSettingsController::class);
     Route::resource('sliders', SliderController::class);
+    Route::resource('alumni-data', AlumniDataController::class);
 
 
     Route::get('/', [AdminDashboardPageController::class, 'index'])->name('home');

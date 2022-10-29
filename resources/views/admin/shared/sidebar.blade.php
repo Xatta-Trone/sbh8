@@ -149,6 +149,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.alumni-data.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Alumni Data
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.contacts.index') }}" class="nav-link">
