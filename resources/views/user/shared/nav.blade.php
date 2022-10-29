@@ -37,13 +37,13 @@
                             alumni
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/about-shbaa">About sbhaa</a>
+                            <a class="dropdown-item" href="/about-shbaa">About SBHAA</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('alumni') }}">Notable alumni</a>
+                            <a class="dropdown-item" href="{{ route('alumni') }}">Notable Alumni</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('alumni-list') }}">Alumni List</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/membership">membership</a>
+                            <a class="dropdown-item" href="{{ route('alumni-registration') }}">Membership Registration</a>
                         </div>
                     </li>
 

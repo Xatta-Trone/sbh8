@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use App\Models\Admin\AlumniData;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Livewire\WithFileUploads;
 
 class AlumniDataEdit extends Component
 {
@@ -79,7 +80,7 @@ class AlumniDataEdit extends Component
         $this->graduation_year = $alumni->graduation_year;
         $this->exam_session = $alumni->exam_session;
         $this->attachment = $alumni->attachment;
-        $this->birth_date = $alumni->birth_date;
+        $this->birth_date = $alumni->birth_date ? Carbon::parse($alumni->birth_date)->format('d-m-Y') : null;
         $this->hobby = $alumni->hobby;
         $this->room_no = $alumni->room_no;
         $this->hall_duration = $alumni->hall_duration;
@@ -142,6 +143,12 @@ class AlumniDataEdit extends Component
         }
 
         // $formattedDescription  = $this->description ? $this->extractImage($this->description, $this->oldDescription) : $this->description;
+
+        if ($this->birth_date || $this->birth_date != "") {
+            $this->birth_date = Carbon::createFromFormat('d-m-Y', $this->birth_date);
+        } else {
+            $this->birth_date = null;
+        }
 
         AlumniData::find($this->alumniId)->update(array_merge($this->validate(), ['image' => $this->fileName,]));
         flash('Alumni updated')->success();

@@ -151,8 +151,10 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="attachment">Birth Date (mm/dd/yyyy)</label>
-                            <input type="date" wire.model="birth_date" class="form-control" />
+                            <label for="attachment">Birth Date (dd-mm-yyyy) </label>
+                            <input type="text" wire:ignore wire.model="birth_date" class="form-control"
+                                id="datemask" data-inputmask-alias="datetime"
+                                data-inputmask-inputformat="dd-mm-yyyy" data-mask value="{{ $birth_date }}" />
                             @error('birth_date')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
@@ -345,3 +347,24 @@
     </div>
 
 </div>
+@push('scripts')
+    <script src="{{ asset('admin_assets/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script>
+        $(function() {
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd-mm/-yyyy', {
+                'placeholder': 'dd-mm-yyyy'
+            });
+
+            $('#datemask').on('change keyup blur mouseleave', function(e) {
+                console.log(e.target.value);
+                @this.set('birth_date', e.target.value)
+            });
+
+
+
+
+        });
+    </script>
+@endpush

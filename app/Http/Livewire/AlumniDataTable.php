@@ -53,7 +53,7 @@ class AlumniDataTable extends DataTableComponent
                 ]),
             Column::make('Publish status', "status")
                 ->format(
-                    fn ($value, $row, Column $column) => ($row->status == 0  ? '<span class="badge badge-danger">Pending approval</span>' : $row->status) ? '<span class="badge badge-success">Published</span>' : '<span class="badge badge-danger">Not Published</span>'
+                fn ($value, $row, Column $column) => ($row->status == 2  ? '<span class="badge badge-danger">Pending approval</span>' : ($row->status == 1 ? '<span class="badge badge-success">Published</span>' : '<span class="badge badge-danger">Not Published</span>'))
                 )
                 ->html()
                 ->sortable(),

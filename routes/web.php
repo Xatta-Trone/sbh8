@@ -39,6 +39,7 @@ Route::get('alumni/{slug}', [GeneralPageController::class, 'alumniDetail'])->nam
 Route::get('alumni', [GeneralPageController::class, 'alumni'])->name('alumni');
 Route::get('contact', [GeneralPageController::class, 'contact'])->name('contact');
 Route::get('alumni-list', [GeneralPageController::class, 'alumniList'])->name('alumni-list');
+Route::get('alumni-registration', [GeneralPageController::class, 'alumniRegistration'])->name('alumni-registration');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);
@@ -50,6 +51,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('site-settings', SiteSettingsController::class);
     Route::resource('sliders', SliderController::class);
     Route::resource('alumni-data', AlumniDataController::class);
+
 
 
     Route::get('/', [AdminDashboardPageController::class, 'index'])->name('home');

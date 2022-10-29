@@ -83,6 +83,16 @@ class GeneralPageController extends Controller
         return view('user.alumni-list');
     }
 
+    public function alumniRegistration()
+    {
+
+        SEOTools::setTitle('Alumni Registration');
+        SEOTools::opengraph()->setUrl(route('alumni-registration'));
+        SEOTools::setCanonical(route('alumni-registration'));
+
+        return view('user.alumni-registration');
+    }
+
     public function alumniDetail($slug)
     {
         $id = explode('-', $slug)[0];

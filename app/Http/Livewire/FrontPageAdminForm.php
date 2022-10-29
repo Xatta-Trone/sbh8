@@ -3,24 +3,23 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
 use App\Models\Admin\AlumniData;
 use App\Trait\SummerNoteImageExtract;
 use Intervention\Image\Facades\Image;
 
-class AlumniDataCreate extends Component
+class FrontPageAdminForm extends Component
 {
     use WithFileUploads, SummerNoteImageExtract;
 
-    public AlumniData $alumni;
+    // public AlumniData $alumni;
     public $image;
     public $name;
     public $nick_name;
     public $department;
     public $gender;
-    public $status;
+    public $status = 2;
     public $graduation_year;
     public $exam_session;
     public $attachment;
@@ -39,6 +38,8 @@ class AlumniDataCreate extends Component
     public $blood_group;
     public $fileName = null;
 
+    public $isSubmitted = false;
+
 
 
     protected $rules = [
@@ -52,8 +53,8 @@ class AlumniDataCreate extends Component
         'email' => 'required|email|unique:alumni_data',
         'birth_date' => 'sometimes|nullable|date',
         'hobby' => 'sometimes|nullable|string',
-        'room_no' => 'sometimes|nullable|string',
-        'hall_duration' => 'sometimes|nullable|string',
+        'room_no' => 'required_if:attachment,resident',
+        'hall_duration' => 'required_if:attachment,resident',
         'mobile_1' => 'required|string',
         'mobile_2' => 'sometimes|nullable|string',
         'occupation' => 'required|string',
@@ -61,7 +62,7 @@ class AlumniDataCreate extends Component
         'organization' => 'sometimes|nullable|string',
         'blood_group' => 'sometimes|nullable|string',
         'image' => 'sometimes|nullable|image|max:1024',
-        'status' => 'required',
+        // 'status' => 'required',
         'present_address' => 'required|string',
         'postcode' => 'required|numeric',
     ];
@@ -85,10 +86,16 @@ class AlumniDataCreate extends Component
         return $tr_code;
     }
 
+    public function updatedEmail()
+    {
+        $this->validateOnly('email');
+    }
+
 
 
     public function submit()
     {
+
         $this->validate();
 
         $uniqueId = $this->unique_order_id();
@@ -100,12 +107,12 @@ class AlumniDataCreate extends Component
             $imgFile = Image::make($this->image->getRealPath());
             // $imgFile->orientate();
             $imgFile->resize(null, 300, function ($constraint) {
-                // $constraint->upsize();
+                $constraint->upsize();
                 $constraint->aspectRatio();
             })->save($public_path);
         }
 
-        // $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        // set birthdate
 
         if ($this->birth_date || $this->birth_date != "") {
             $this->birth_date = Carbon::createFromFormat('d-m-Y', $this->birth_date);
@@ -113,14 +120,17 @@ class AlumniDataCreate extends Component
             $this->birth_date = null;
         }
 
-        AlumniData::create(array_merge($this->validate(), ['image' => $this->fileName, 'unique_id' => $uniqueId]));
-        flash('Alumni created')->success();
-        return redirect()->route('admin.alumni-data.index');
+
+        // $formattedDescription  = $this->description ? $this->extractImage($this->description) : $this->description;
+        // status = 2 means needs approval
+        AlumniData::create(array_merge($this->validate(), ['image' => $this->fileName, 'unique_id' => $uniqueId, 'status' => 2, 'birth_date' => $this->birth_date]));
+
+        $this->isSubmitted = true;
     }
 
 
     public function render()
     {
-        return view('livewire.alumni-data-create');
+        return view('livewire.front-page-admin-form');
     }
 }
