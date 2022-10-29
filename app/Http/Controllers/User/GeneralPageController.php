@@ -73,6 +73,16 @@ class GeneralPageController extends Controller
         return view('user.alumni', compact('alumins'));
     }
 
+    public function alumniList()
+    {
+
+        SEOTools::setTitle('Alumni database');
+        SEOTools::opengraph()->setUrl(route('alumni-list'));
+        SEOTools::setCanonical(route('alumni-list'));
+
+        return view('user.alumni-list');
+    }
+
     public function alumniDetail($slug)
     {
         $id = explode('-', $slug)[0];

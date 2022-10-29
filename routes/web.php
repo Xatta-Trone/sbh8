@@ -38,6 +38,7 @@ Route::get('administration', [GeneralPageController::class, 'administration'])->
 Route::get('alumni/{slug}', [GeneralPageController::class, 'alumniDetail'])->name('alumniDetail');
 Route::get('alumni', [GeneralPageController::class, 'alumni'])->name('alumni');
 Route::get('contact', [GeneralPageController::class, 'contact'])->name('contact');
+Route::get('alumni-list', [GeneralPageController::class, 'alumniList'])->name('alumni-list');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', PagesController::class);

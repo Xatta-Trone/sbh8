@@ -41,7 +41,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('alumni') }}">Notable alumni</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/are-you-a-member-of-sbhaa">are you a member of sbhaa</a>
+                            <a class="dropdown-item" href="{{ route('alumni-list') }}">Alumni List</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/membership">membership</a>
                         </div>
