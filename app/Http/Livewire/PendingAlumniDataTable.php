@@ -8,7 +8,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
-class AlumniDataTable extends DataTableComponent
+class PendingAlumniDataTable extends DataTableComponent
 {
     protected $model = AlumniData::class;
 
@@ -21,7 +21,7 @@ class AlumniDataTable extends DataTableComponent
     public function builder(): Builder
     {
 
-        return AlumniData::query()->select('image');
+        return AlumniData::query()->select('image')->where('status', 2);
     }
 
     public function columns(): array
@@ -53,7 +53,7 @@ class AlumniDataTable extends DataTableComponent
                 ]),
             Column::make('Publish status', "status")
                 ->format(
-                fn ($value, $row, Column $column) => ($row->status == 2  ? '<span class="badge badge-danger">Pending approval</span>' : ($row->status == 1 ? '<span class="badge badge-success">Published</span>' : '<span class="badge badge-danger">Not Published</span>'))
+                    fn ($value, $row, Column $column) => ($row->status == 2  ? '<span class="badge badge-danger">Pending approval</span>' : ($row->status == 1 ? '<span class="badge badge-success">Published</span>' : '<span class="badge badge-danger">Not Published</span>'))
                 )
                 ->html()
                 ->sortable(),
@@ -62,7 +62,7 @@ class AlumniDataTable extends DataTableComponent
                 ->sortable(),
             Column::make('Action')
                 ->label(
-                fn ($row, Column $column) => view('shared.action', ['route' => 'admin.alumni-data'])->withRow($row)
+                    fn ($row, Column $column) => view('shared.pending-action', ['route' => 'admin.alumni-data'])->withRow($row)
                 ),
         ];
     }

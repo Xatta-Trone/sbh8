@@ -52,6 +52,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('sliders', SliderController::class);
     Route::resource('alumni-data', AlumniDataController::class);
 
+    Route::get('pending-alumni-data', [AlumniDataController::class, 'pending'])->name('alumni-data-pending');
+    Route::get('alumni-data-approve/{id}', [AlumniDataController::class, 'approve'])->name('alumni-data.approve');
+
 
 
     Route::get('/', [AdminDashboardPageController::class, 'index'])->name('home');

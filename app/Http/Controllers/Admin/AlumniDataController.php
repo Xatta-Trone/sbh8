@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\AlumniApproved;
 use Illuminate\Http\Request;
 use App\Models\Admin\AlumniData;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class AlumniDataController extends Controller
@@ -27,6 +29,22 @@ class AlumniDataController extends Controller
     public function create()
     {
         return view('admin.alumni-data.create');
+    }
+
+    public function pending()
+    {
+        return view('admin.alumni-data.pending');
+    }
+
+    public function approve($id)
+    {
+        $alumni =  AlumniData::findOrFail($id);
+        if ($alumni->update(['status' => 1])) {
+            $data = AlumniData::findOrFail($id);
+            Mail::to($data->email)->send(new AlumniApproved($data));
+            flash('Alumni approved')->success();
+            return redirect()->back();
+        }
     }
 
     /**

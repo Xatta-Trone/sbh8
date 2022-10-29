@@ -10,3 +10,9 @@
     </a>
 </form>
 
+@if (isset($pending))
+
+<p>asdf</p>
+
+@endif
+
