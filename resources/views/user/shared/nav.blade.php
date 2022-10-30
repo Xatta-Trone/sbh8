@@ -44,6 +44,8 @@
                             <a class="dropdown-item" href="{{ route('alumni-list') }}">Alumni List</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('alumni-registration') }}">Membership Registration</a>
+                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://reunion.sherebanglahall.buet.ac.bd/" target="_blank">Reunion 2022 Registration</a>
                         </div>
                     </li>
 
