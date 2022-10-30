@@ -312,7 +312,7 @@
                         <img src="{{ $image->temporaryUrl() }}" height="250" width="auto">
                     @endif
                     <div>
-                        <label for="description">Image (max file size 1MB)</label>
+                        <label for="description">Image (max file size 1MB) <span class="badge badge-danger">required</span></label>
                         <input type="file" wire:model="image" class="form-control"
                             accept="image/png, image/jpeg, image/jpg">
                         <small class="text-danger">Please wait until you see the image here.</small>

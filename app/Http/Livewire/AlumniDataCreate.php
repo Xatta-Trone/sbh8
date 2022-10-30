@@ -60,7 +60,7 @@ class AlumniDataCreate extends Component
         'position' => 'required|string',
         'organization' => 'sometimes|nullable|string',
         'blood_group' => 'sometimes|nullable|string',
-        'image' => 'sometimes|nullable|image|max:1024',
+        'image' => 'required|image|max:1024',
         'status' => 'required',
         'present_address' => 'required|string',
         'postcode' => 'required|numeric',
